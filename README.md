@@ -7,6 +7,8 @@ to dynamically orchestrate the processing flows on edges. It explains how to ena
 node system, register user defined workload patterns and orchestrate them on the edges in the form of running tasks. For
 better understanding, examples have been included in the tutorial.
 
+-   このチュートリアルは[日本語](README.ja.md)でもご覧いただけます。
+
 ## Contents
 
 <details>
@@ -46,7 +48,7 @@ this tutorial, which are relatable to the figure below.
 
 Additional material to understand the developer know-hows, visit
 [FogFlow tutorial](https://fogflow.readthedocs.io/en/latest/introduction.html). FogFlow can also be integrated with
-other FIWARE Ges.
+other FIWARE GEs.
 
 -   [Integrate FogFlow with Scorpio Broker](https://fogflow.readthedocs.io/en/latest/scorpioIntegration.html)
 -   [Integrate FogFlow with QuantumLeap](https://fogflow.readthedocs.io/en/latest/QuantumLeapIntegration.html)
@@ -167,7 +169,7 @@ repository:
 **Prerequisites** for starting up an edge node are as follows:
 
 -   **Docker:** Please refer to
-    [Install Docker CE on Respberry Pi](https://withblue.ink/2019/07/13/yes-you-can-run-docker-on-raspbian.html).
+    [Install Docker CE on Raspberry Pi](https://withblue.ink/2019/07/13/yes-you-can-run-docker-on-raspbian.html).
 
 **To start the installation, do the following:**
 
@@ -193,7 +195,7 @@ repository:
 }
 ```
 
-2.  Start both Edge IoT Broker and FogFlow Worker. If the edge node is ARM-basd, then attach arm as the command
+2.  Start both Edge IoT Broker and FogFlow Worker. If the edge node is ARM-based, then attach arm as the command
     parameter.
 
 ```console
@@ -320,7 +322,7 @@ The form is explained as the following.
 -   **Image:** the name of your operator docker image, must be consistent with the one you publish to
     [Docker Hub](https://hub.docker.com/)
 -   **Tag:** the tag you used to publish your operator docker image; by default it is "latest"
--   **Hardware Type:** the hardware type that your docker image supports, including X86 or ARM (e.g. Raspberry Pi)
+-   **Hardware Type:** the hardware type that your docker image supports, including x86 or ARM (e.g. Raspberry Pi)
 -   **OS Type:** the operating system type that your docker image supports; currently this is only limited to Linux
 -   **Operator:** the operator name, which must be unique and will be used when defining a service topology
 -   **Prefetched:** if this is checked, that means all edge nodes will start to fetch this docker image in advance;
@@ -518,7 +520,7 @@ Service Topology can be triggered in two steps:
 -   Sending a high level intent object which breaks the service topology into separate tasks
 -   Providing Input Streams to the tasks of that service topology.
 
-The intent object is sent using the fogflow dashboard with the following properties:
+The intent object is sent using the FogFlow dashboard with the following properties:
 
 -   **Topology:** specifies which topology the intent object is meant for.
 -   **Priority:** defines the priority level of all tasks in your topology, which will be utilized by edge nodes to
