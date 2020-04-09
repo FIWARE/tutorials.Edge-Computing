@@ -36,7 +36,7 @@ where FogFlow start a processing flow to alters the environment through actuator
 overview of the scenario. Sensors, actuators and the dynamic processing flows are explained in the trailing sections in
 this tutorial, which are relatable to the figure below.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fogflow-overall-view.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/fogflow-overall-view.png)
 
 1. User provides his scenario to FogFlow, which includes what to do, when to do. FogFlow will figure out where to do.
 2. Sensors regularly send context data to FogFlow. Data may include environmental data like temperature, video
@@ -60,7 +60,7 @@ The FogFlow framework operates on a geo-distributed, hierarchical, and heterogen
 cloud nodes, edge nodes, and IoT devices. The following figure illustrates the system architecture of FogFlow and its
 major components across three logical layers.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/architecture.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/architecture.png)
 
 ## Layered Architecture
 
@@ -148,7 +148,7 @@ Logically, FogFlow consists of the following three layers:
 -   Check the system status from the FogFlow DashBoard at `http://<coreservice_ip>/index.html`. Webpage to be displayed
     is shown in the figure below.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/dashboard.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/dashboard.png)
 
 ## FogFlow Edge Node
 
@@ -294,19 +294,19 @@ There are two steps to register an operator in Fogflow.
 1. **Register an Operator** to define what would be the name of Operator and what input parameters it would need. The
    following picture shows the list of all registered operators.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/operator-list.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/operator-list.png)
 
 To register a new operator, click on "register" button, create an operator and add parameters to it. To define the port
 for the operator application, use "service_port" and give a valid port number as its value. The application would be
 accessible to the outer world through this port.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/operator-registry.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/operator-registry.png)
 
 2. **Register a Docker Image and choose Operator** to define the docker image and associate an already registered
    Operator with it. The following picture shows the list of registered docker images and the key information of each
    image.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/dockerimage-registry-list.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/dockerimage-registry-list.png)
 
 Clicking on "register" button, fill out the required information and click on "register" button to finish the
 registration.
@@ -322,7 +322,7 @@ The form is explained as the following.
     otherwise, the operator docker image is fetched on demand, only when edge nodes need to run a scheduled task
     associated with this operator.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/dockerimage-registry.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/dockerimage-registry.png)
 
 ### Define a "dummy" Fog Function
 
@@ -332,20 +332,20 @@ Right click inside the task design board, a menu will be displayed that includes
     output streams.
 -   **EntityStream**: is the input data element which can be linked with a fog function Task as its input data stream.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-1.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-1.png)
 
 Choose "Task", a Task element will be placed on the design board, as shown below.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-2.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-2.png)
 
 Click the configuration button on the top-right corner of the task element, as illustrated in the following figure.
 Specify the name of the Task and choose an operator out of a list of some pre-registered operators.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-3.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-3.png)
 
 Add an "EntityStream" from the pop-up menu to the design board.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-4.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-4.png)
 
 It contains the following fields:
 
@@ -363,15 +363,15 @@ It contains the following fields:
 Configure the EntityStream by clicking on its configuration button as shown below. "Temperature" is shown as example
 here, as is the entity type of input data for the "dummy" fog function.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-5.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-5.png)
 
 There can be multiple EntityStreams for a Task and they must be connected to the Task as shown below.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-6.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-6.png)
 
 Submit the Fog Function.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-7.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-7.png)
 
 ### Trigger the "dummy" Fog Function
 
@@ -385,12 +385,12 @@ Go to Device menu in System Status tab. Provide the following information.
 -   **Device Type**: use "Temperature" as the entity type
 -   **Location**: to place a location on the map
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/device-registration.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/device-registration.png)
 
 Once the device profile is registered, a new "Temperature" sensor entity will be created and it will trigger the "dummy"
 fog function automatically.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-triggering-device.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-triggering-device.png)
 
 The other way to trigger the fog function is to send an NGSI entity update in the form of a POST request to the FogFlow
 broker to create the "Temperature" sensor entity.
@@ -435,11 +435,11 @@ Verify whether the fog function is triggered or not in the following way.
 
 -   check the task instance of this fog function, as shown in the following picture
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-task-running.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-task-running.png)
 
 -   check the result generated by its running task instance, as shown in the following picture
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-streams.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-streams.png)
 
 ## Define and trigger a Service Topology
 
@@ -458,7 +458,7 @@ owner. Moreover, the detected event is reported to the cloud for information agg
 then presented to the system operator via a dashboard service. In addition, the system operator can dynamically update
 the rule for anomaly detection.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/retails.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/retails.png)
 
 ### Implement the Operator Functions
 
@@ -485,14 +485,14 @@ There are two types of result consumers:
 2.  the alarm in each shop, which subscribes to the anomaly events generated by the Anomaly Detector task on the local
     edge node in the retail store.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/retail-flow.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/retail-flow.png)
 
 ### Specify the Service Topology
 
 Assume that the tasks to be used in the service topology have been implemented and registered, just specify the service
 topology in the following way using FogFlow Topology Editor.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/retail-topology-1.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/retail-topology-1.png)
 
 As seen in the picture, the following important information must be provided.
 
@@ -531,7 +531,7 @@ The intent object is sent using the fogflow dashboard with the following propert
 -   **Geoscope:** is a defined geographical area where input streams should be selected. Global as well as custom
     geoscopes can be set.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/intent-registry.png")
+![](https://fiware.github.io/tutorials.Edge-Computing/img/intent-registry.png)
 
 As soon as context data are received, which fall within the scope of the intent object, tasks are launched on the
 nearest workers.
