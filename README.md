@@ -27,9 +27,9 @@ better understanding, examples have been included in the tutorial.
         [Implement the Operator Functions](#implement-the-operator-functions) +
         [Specify the Service Topology](#specify-the-service-topology) +
         [Trigger the Service Topology by sending an Intent](#trigger-the-service-topology-by-sending-an-intent)
-        </details>
+</details>
 
-# Context Data and Context Providers
+# Cloud-Edge Computing
 
 The intention of the tutorial is to teach its users how the IoT sensor devices send context data to FogFlow, when and
 where FogFlow start a processing flow to alters the environment through actuator devices. The figure below gives an
@@ -92,15 +92,7 @@ Logically, FogFlow consists of the following three layers:
 
 **To start the installation of FogFlow cloud services, do the following:**
 
-1. Download the docker-compose file and the configuration files as below.
-
-```console
-  wget https://raw.githubusercontent.com/smartfog/fogflow/master/docker/core/http/docker-compose.yml
-  wget https://raw.githubusercontent.com/smartfog/fogflow/master/docker/core/http/config.json
-  wget https://raw.githubusercontent.com/smartfog/fogflow/master/docker/core/http/nginx.conf
-```
-
-2. Change the following IP addresses in config.json according to the current environment.
+1. Change the following IP addresses in config.json according to the current environment.
 
     - **coreservice_ip**: public IP address of the FogFlow cloud node.
     - **external_hostip**: public IP address of the current cloud/edge node;
@@ -121,20 +113,22 @@ Logically, FogFlow consists of the following three layers:
 }
 ```
 
-3. Pull the docker images of FogFlow components and start them.
+2. Pull the docker images of FogFlow components and start them.
 
 ```console
   docker-compose pull
   docker-compose up -d
 ```
 
-4. Validate the FogFlow cloud node setup through any of these two ways:
+3. Validate the FogFlow cloud node setup through any of these two ways:
 
--   Check if all the containers are up and running using "docker ps -a".
+-   Check if all the containers are up and running using `docker ps -a`.
 
 ```console
   docker ps -a
+```
 
+```text
   CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                                   NAMES
   90868b310608        nginx:latest        "nginx -g 'daemon of…"   5 seconds ago       Up 3 seconds        0.0.0.0:80->80/tcp                                      fogflow_nginx_1
   d4fd1aee2655        fogflow/worker      "/worker"                6 seconds ago       Up 2 seconds                                                                fogflow_cloud_worker_1
@@ -159,16 +153,7 @@ Logically, FogFlow consists of the following three layers:
 
 **To start the installation, do the following:**
 
-1. Download the deployment script and configuration file:
-
-```console
-  wget https://raw.githubusercontent.com/smartfog/fogflow/master/docker/edge/http/start.sh
-  wget https://raw.githubusercontent.com/smartfog/fogflow/master/docker/edge/http/stop.sh
-  wget https://raw.githubusercontent.com/smartfog/fogflow/master/docker/edge/http/config.json
-  chmod +x start.sh  stop.sh
-```
-
-2. Change the configuration file similar to the cloud node, but now coreservice_ip will remain uniform because it is the
+1. Change the configuration file similar to the cloud node, but now coreservice_ip will remain uniform because it is the
    IP address of the cloud node.
 
 ```json
@@ -190,14 +175,14 @@ Logically, FogFlow consists of the following three layers:
 }
 ```
 
-3. Start both Edge IoT Broker and FogFlow Worker. If the edge node is ARM-basd, then attach arm as the command
+2. Start both Edge IoT Broker and FogFlow Worker. If the edge node is ARM-basd, then attach arm as the command
    parameter.
 
 ```console
   ./start.sh
 ```
 
-4. Stop both Edge IoT Broker and FogFlow Worker:
+3. Stop both Edge IoT Broker and FogFlow Worker:
 
 ```console
   ./stop.sh
@@ -244,49 +229,50 @@ FogFlow allows the developers to specify their own function code inside a regist
 operator.
 
 Python, Java and Javascript templates to write an operator can be found
-[here](https://github.com/smartfog/fogflow/tree/master/application/template).
+[here](https://github.com/FIWARE/tutorials.Edge-Computing/tree/master/templates).
 
 For the current tutorial, refer the
-[dummy operator code](https://github.com/smartfog/fogflow/tree/master/application/operator/dummy). Replace the following
-content in function.js file and build the docker image by running the build file. This image can be used as an operator.
+[dummy operator code](https://github.com/FIWARE/tutorials.Edge-Computing/tree/master/dummy). Replace the following
+content in `function.js` file and build the docker image by running the build file. This image can be used as an
+operator.
 
-```console
-    exports.handler = function(contextEntity, publish, query, subscribe) {
-        console.log("enter into the user-defined fog function");
+```javascript
+exports.handler = function(contextEntity, publish, query, subscribe) {
+    console.log("enter into the user-defined fog function");
 
-        var entityID = contextEntity.entityId.id;
+    var entityID = contextEntity.entityId.id;
 
-        if (contextEntity == null) {
-            return;
-        }
-        if (contextEntity.attributes == null) {
-            return;
-        }
+    if (contextEntity == null) {
+        return;
+    }
+    if (contextEntity.attributes == null) {
+        return;
+    }
 
-        var updateEntity = {};
-        updateEntity.entityId = {
-            id: "Stream.result." + entityID,
-            type: 'result',
-            isPattern: false
-        };
-        updateEntity.attributes = {};
-        updateEntity.attributes.city = {
-            type: 'string',
-            value: 'Heidelberg'
-        };
-
-        updateEntity.metadata = {};
-        updateEntity.metadata.location = {
-            type: 'point',
-            value: {
-                'latitude': 33.0,
-                'longitude': -1.0
-            }
-        };
-
-        console.log("publish: ", updateEntity);
-        publish(updateEntity);
+    var updateEntity = {};
+    updateEntity.entityId = {
+        id: "Stream.result." + entityID,
+        type: "result",
+        isPattern: false
     };
+    updateEntity.attributes = {};
+    updateEntity.attributes.city = {
+        type: "string",
+        value: "Heidelberg"
+    };
+
+    updateEntity.metadata = {};
+    updateEntity.metadata.location = {
+        type: "point",
+        value: {
+            latitude: 33.0,
+            longitude: -1.0
+        }
+    };
+
+    console.log("publish: ", updateEntity);
+    publish(updateEntity);
+};
 ```
 
 There are two steps to register an operator in Fogflow.
@@ -396,39 +382,33 @@ The other way to trigger the fog function is to send an NGSI entity update in th
 broker to create the "Temperature" sensor entity.
 
 ```console
-    curl -iX POST \
-      'http://localhost:8080/ngsi10/updateContext' \
-      -H 'Content-Type: application/json' \
-      -d '
-    {
-        "contextElements": [
-            {
-                "entityId": {
-                    "id": "Device.temp001",
-                    "type": "Temperature",
-                    "isPattern": false
-                },
-                "attributes": [
+curl -iX POST \
+  'http://localhost:8080/ngsi10/updateContext' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "contextElements": [
+        {
+            "entityId": {
+                "id": "Device.temp001", "type": "Temperature", "isPattern": false
+            },
+            "attributes": [
                 {
-                  "name": "temp",
-                  "type": "integer",
-                  "value": 10
+                  "name": "temp", "type": "integer", "value": 10
                 }
-                ],
-                "domainMetadata": [
-                {
-                    "name": "location",
-                    "type": "point",
-                    "value": {
-                        "latitude": 49.406393,
-                        "longitude": 8.684208
-                    }
+            ],
+            "domainMetadata": [
+            { 
+                "name": "location", "type": "point",
+                "value": {
+                    "latitude": 49.406393,
+                    "longitude": 8.684208
                 }
-                ]
             }
-        ],
-        "updateAction": "UPDATE"
-    }'
+            ]
+        }
+    ],
+    "updateAction": "UPDATE"
+}'
 ```
 
 Verify whether the fog function is triggered or not in the following way.
@@ -545,52 +525,43 @@ Here are curl examples to send Input streams for Anomaly-Detector use case. It r
 > The Curl case assumes that the cloud IoT Broker is running on localhost on port 8070.
 
 ```console
-        curl -iX POST \
-          'http://localhost:8070/ngsi10/updateContext' \
-        -H 'Content-Type: application/json' \
-        -d '
-            {
-            "contextElements": [
-                    {
-               "entityId":{
-                  "id":"Device.PowerPanel.01",
-                  "type":"PowerPanel"
-               },
-               "attributes":[
-                  {
-                 "name":"usage",
-                 "type":"integer",
-                 "value":4
-                  },
-                  {
-                 "name":"shop",
-                 "type":"string",
-                 "value":"01"
-                  },
-                  {
-                 "name":"iconURL",
-                 "type":"string",
-                 "value":"/img/shop.png"
-                  }
-               ],
-               "domainMetadata":[
-                  {
-                 "name":"location",
-                 "type":"point",
-                 "value":{
-                    "latitude":35.7,
-                    "longitude":138
-                 }
-                  },
-                  {
-                 "name":"shop",
-                 "type":"string",
-                 "value":"01"
-                  }
-               ]
-            } ],
-                "updateAction": "UPDATE"
-        }'
+curl -iX POST \
+  'http://localhost:8070/ngsi10/updateContext' \
+-H 'Content-Type: application/json' \
+-d '
+    {
+    "contextElements": [
+        {
+            "entityId":{
+                "id":"Device.PowerPanel.01", "type":"PowerPanel"
+            },
+           "attributes":[
+                {
+                    "name":"usage", "type":"integer", "value":4
+                },
+                {
+                    "name":"shop", "type":"string", "value":"01"
+                },
+                {
+                    "name":"iconURL", "type":"string", "value":"/img/shop.png"
+                }
+           ],
+           "domainMetadata":[
+                {
+                    "name":"location", "type":"point",
+                    "value": {
+                        "latitude":35.7,
+                        "longitude":138
+                    }
+                },
+                {
+                    "name":"shop", "type":"string", "value":"01"
+                }
+           ]
+        } 
+    ],
+    "updateAction": "UPDATE"
+}'
 ```
 
 Outputs of the Service Topology will be published to the Broker, any application subscribing to the data will receive
@@ -606,4 +577,4 @@ the other [tutorials in this series](https://fiware-tutorials.rtfd.io)
 
 ## License
 
-[MIT](LICENSE) © 2018-2020 FIWARE Foundation e.V.
+[MIT](LICENSE) © 2020 FIWARE Foundation e.V.
