@@ -584,8 +584,7 @@ curl -iX POST \
 ```
 
 Outputs of the Service Topology will be published to the Broker, any application subscribing to the data will receive
-the notification. An actuator device can also receive these streams as inputs from the Broker. Resulting streams will be
-also be visible in the Streams menu on FogFlow dashboard.
+the notification. An actuator device can also receive these streams as inputs from the Broker. Resulting streams will also be visible in the Streams menu on FogFlow dashboard.
 
 # Next Steps
 
