@@ -18,16 +18,16 @@ better understanding, examples have been included in the tutorial.
     -   [FogFlow Cloud Node](#fogflow-cloud-node)
     -   [FogFlow Edge Node](#fogflow-edge-node)
 -   [Connect IoT Devices to FogFlow](#connect-iot-devices-to-fogflow)
--   [Dynamic Orchestration at Edges using FogFlow](#dynamic-orchestration-at-edges-using-fogflow)
-    -   [Define and trigger a Fog Function](#define-and-trigger-a-fog-function)
-        -   [Register the Task Operators](#register-the-task-operators)
-        -   [Define a "dummy" Fog Function](#define-a-dummy-fog-function)
-        -   [Trigger the "dummy" Fog Function](#trigger-the-dummy-fog-function)
-    -   [Define and trigger a Service Topology](#define-and-trigger-a-service-topology) +
-        [Implement the Operator Functions](#implement-the-operator-functions) +
-        [Specify the Service Topology](#specify-the-service-topology) +
-        [Trigger the Service Topology by sending an Intent](#trigger-the-service-topology-by-sending-an-intent)
-</details>
+-   [Dynamic Orchestration at Edges using FogFlow](#dynamic-orchestration-at-edges-using-fogflow) -
+    [Define and trigger a Fog Function](#define-and-trigger-a-fog-function) -
+    [Register the Task Operators](#register-the-task-operators) -
+    [Define a "dummy" Fog Function](#define-a-dummy-fog-function) -
+    [Trigger the "dummy" Fog Function](#trigger-the-dummy-fog-function) -
+    [Define and trigger a Service Topology](#define-and-trigger-a-service-topology) +
+    [Implement the Operator Functions](#implement-the-operator-functions) +
+    [Specify the Service Topology](#specify-the-service-topology) +
+    [Trigger the Service Topology by sending an Intent](#trigger-the-service-topology-by-sending-an-intent)
+    </details>
 
 # Cloud-Edge Computing
 
@@ -40,9 +40,9 @@ this tutorial, which are relatable to the figure below.
 
 1.  User provides his scenario to FogFlow, which includes what to do, when to do. FogFlow will figure out where to do.
 2.  Sensors regularly send context data to FogFlow. Data may include environmental data like temperature, video
-   streaming, pictures, etc.
-3.  FogFlow orchestrates processing flows at edges in no time. These processing flows may change the state of an actuator
-   or publish some data back to FogFlow, it is all about what user wants to do.
+    streaming, pictures, etc.
+3.  FogFlow orchestrates processing flows at edges in no time. These processing flows may change the state of an
+    actuator or publish some data back to FogFlow, it is all about what user wants to do.
 
 Additional material to understand the developer know-hows, visit
 [FogFlow tutorial](https://fogflow.readthedocs.io/en/latest/introduction.html). FogFlow can also be integrated with
@@ -171,8 +171,8 @@ repository:
 
 **To start the installation, do the following:**
 
-1.  Change the configuration file similar to the cloud node, but now coreservice_ip will remain uniform because it is the
-   IP address of the cloud node.
+1.  Change the configuration file similar to the cloud node, but now coreservice_ip will remain uniform because it is
+    the IP address of the cloud node.
 
 ```json
 {
@@ -194,7 +194,7 @@ repository:
 ```
 
 2.  Start both Edge IoT Broker and FogFlow Worker. If the edge node is ARM-basd, then attach arm as the command
-   parameter.
+    parameter.
 
 ```console
   ./start.sh
@@ -296,7 +296,7 @@ exports.handler = function(contextEntity, publish, query, subscribe) {
 There are two steps to register an operator in Fogflow.
 
 1.  **Register an Operator** to define what would be the name of Operator and what input parameters it would need. The
-   following picture shows the list of all registered operators.
+    following picture shows the list of all registered operators.
 
 ![](https://fiware.github.io/tutorials.Edge-Computing/img/operator-list.png)
 
@@ -307,8 +307,8 @@ accessible to the outer world through this port.
 ![](https://fiware.github.io/tutorials.Edge-Computing/img/operator-registry.png)
 
 2.  **Register a Docker Image and choose Operator** to define the docker image and associate an already registered
-   Operator with it. The following picture shows the list of registered docker images and the key information of each
-   image.
+    Operator with it. The following picture shows the list of registered docker images and the key information of each
+    image.
 
 ![](https://fiware.github.io/tutorials.Edge-Computing/img/dockerimage-registry-list.png)
 
@@ -317,7 +317,8 @@ registration.
 
 The form is explained as the following.
 
--   **Image:** the name of your operator docker image, must be consistent with the one you publish to [Docker Hub](https://hub.docker.com/)
+-   **Image:** the name of your operator docker image, must be consistent with the one you publish to
+    [Docker Hub](https://hub.docker.com/)
 -   **Tag:** the tag you used to publish your operator docker image; by default it is "latest"
 -   **Hardware Type:** the hardware type that your docker image supports, including X86 or ARM (e.g. Raspberry Pi)
 -   **OS Type:** the operating system type that your docker image supports; currently this is only limited to Linux
@@ -500,15 +501,15 @@ As seen in the picture, the following important information must be provided.
     -   service description: some text to describe what this service is about
 
 2.  draw the graph of data processing flows within the service topology with a right click at some place of the design
-   board, choose either task or input streams or shuffle to define your data processing flows according to the design
-   you have in mind.
+    board, choose either task or input streams or shuffle to define your data processing flows according to the design
+    you have in mind.
 
 3.  define the profile for each element in the data flow including the following using the configuration button of each.
 
     -   **Task** profile can be defined by specifying name, operator and entity type.
     -   **EntityStream** profile is updated with SelectedType, SelectedAttributes, Groupby, Scoped fields.
     -   **Shuffle** element serves as a connector between two tasks such that output of a task is the input for the
-      shuffle element and same is forwarded by Shuffle to another task (or tasks) as input.
+        shuffle element and same is forwarded by Shuffle to another task (or tasks) as input.
 
 ### Trigger the Service Topology by sending an Intent
 
