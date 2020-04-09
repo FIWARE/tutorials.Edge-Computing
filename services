@@ -1,0 +1,56 @@
+#!/bin/bash
+#
+#  Command Line Interface to start all services associated with the Getting-Started Tutorial
+#
+#  For this tutorial the commands are merely a convenience script to run docker-compose
+#
+
+set -e
+
+if (( $# != 1 )); then
+    echo "Illegal number of parameters"
+    echo "usage: services [create|start|stop]"
+    exit 1
+fi
+
+
+stoppingContainers () {
+	echo "Stopping containers"
+	docker-compose --log-level ERROR -p fiware down -v --remove-orphans
+}
+
+displayServices () {
+	echo ""
+	docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}" --filter name=fiware-*
+	echo ""
+}
+
+
+
+command="$1"
+case "${command}" in
+	"help")
+        echo "usage: services [create|start|stop]"
+        ;;
+	 "start")
+		stoppingContainers
+		echo -e "Starting eleven containers including \033[1;35mFogFlow\033[0m, an  \033[1mNGINX\033[0m instance, a \033[1mGrafana\033[0m metrics dashboard and \033[RabbitMQ\033[0m message broker."
+		echo ""
+		docker-compose --log-level ERROR -p fiware up -d --remove-orphans
+		loadData
+		displayServices
+		echo -e "Now open \033[4mhttp://localhost:3000/device/monitor\033[0m"
+		;;
+	"stop")
+		stoppingContainers
+		;;
+	"create")
+		echo "Pulling Docker images"
+		docker-compose --log-level ERROR -p fiware pull
+		;;
+	*)
+		echo "Command not Found."
+		echo "usage: services [create|start|stop]"
+		exit 127;
+		;;
+esac

@@ -77,6 +77,24 @@ Logically, FogFlow consists of the following three layers:
 
 # Start Up
 
+Before you start you should ensure that you have obtained or built the necessary Docker images locally. Please clone the
+repository and create the necessary images by running the commands as shown:
+
+```bash
+git clone https://github.com/FIWARE/tutorials.Edge-Computing.git
+cd tutorials.Edge-Computing
+
+./services create
+```
+
+Thereafter, all services can be initialized from the command-line by running the
+[services](https://github.com/FIWARE/tutorials.Edge-Computing/blob/master/services) Bash script provided within the
+repository:
+
+```bash
+./services start
+```
+
 ## FogFlow Cloud Node
 
 **Prerequisites** for starting up a cloud node are as follows:
@@ -397,7 +415,7 @@ curl -iX POST \
                 }
             ],
             "domainMetadata": [
-            { 
+            {
                 "name": "location", "type": "point",
                 "value": {
                     "latitude": 49.406393,
@@ -558,7 +576,7 @@ curl -iX POST \
                     "name":"shop", "type":"string", "value":"01"
                 }
            ]
-        } 
+        }
     ],
     "updateAction": "UPDATE"
 }'
