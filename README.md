@@ -18,15 +18,15 @@ better understanding, examples have been included in the tutorial.
     -   [FogFlow Cloud Node](#fogflow-cloud-node)
     -   [FogFlow Edge Node](#fogflow-edge-node)
 -   [Connect IoT Devices to FogFlow](#connect-iot-devices-to-fogflow)
--   [Dynamic Orchestration at Edges using FogFlow](#dynamic-orchestration-at-edges-using-fogflow) -
-    [Define and trigger a Fog Function](#define-and-trigger-a-fog-function) -
-    [Register the Task Operators](#register-the-task-operators) -
-    [Define a "dummy" Fog Function](#define-a-dummy-fog-function) -
-    [Trigger the "dummy" Fog Function](#trigger-the-dummy-fog-function) -
-    [Define and trigger a Service Topology](#define-and-trigger-a-service-topology) +
-    [Implement the Operator Functions](#implement-the-operator-functions) +
-    [Specify the Service Topology](#specify-the-service-topology) +
-    [Trigger the Service Topology by sending an Intent](#trigger-the-service-topology-by-sending-an-intent)
+-   [Dynamic Orchestration at Edges using FogFlow](#dynamic-orchestration-at-edges-using-fogflow) 
+    -   [Define and trigger a Fog Function](#define-and-trigger-a-fog-function)
+        -    [Register the Task Operators](#register-the-task-operators)
+        -    [Define a "dummy" Fog Function](#define-a-dummy-fog-function)
+        -    [Trigger the "dummy" Fog Function](#trigger-the-dummy-fog-function)
+    -   [Define and trigger a Service Topology](#define-and-trigger-a-service-topology)
+        -    [Implement the Operator Functions](#implement-the-operator-functions)
+        -    [Specify the Service Topology](#specify-the-service-topology)
+        -    [Trigger the Service Topology by sending an Intent](#trigger-the-service-topology-by-sending-an-intent)
     </details>
 
 # Cloud-Edge Computing
