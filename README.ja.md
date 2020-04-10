@@ -27,7 +27,8 @@
         -   [オペレータ・ファンクションの実装](#implement-the-operator-functions)
         -   [サービス・トポロジの指定](#specify-the-service-topology)
         -   [インテントを送信してサービス・トポロジをトリガー](#trigger-the-service-topology-by-sending-an-intent)
-    </details>
+
+</details>
 
 # クラウド-エッジ・コンピューティング (Cloud-Edge Computing)
 
@@ -564,8 +565,8 @@ Anomaly-Detector の使用例の入力ストリームを送信するための Cu
 必要です。
 
 > **注:** ユーザは、
-> [シミュレートされたパワーパネル・デバイス](https://github.com/smartfog/fogflow/tree/544ebe782467dd81d5565e35e2827589b90e9601/application/device/powerpanel)
-> を使用して、PowerPanelデータを送信することもできます。
+> [シミュレートされた PowerPanel デバイス](https://github.com/smartfog/fogflow/tree/544ebe782467dd81d5565e35e2827589b90e9601/application/device/powerpanel)
+> を使用して、PowerPanel データを送信することもできます。
 >
 > Curl のケースでは、クラウド IoT Broker がポート 8070 の localhost で実行されていると想定しています。
 
