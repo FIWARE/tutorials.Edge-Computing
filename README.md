@@ -8,7 +8,8 @@ to dynamically orchestrate the processing flows on edges. It explains how to ena
 node system, register user defined workload patterns and orchestrate them on the edges in the form of running tasks. For
 better understanding, examples have been included in the tutorial.
 
--   このチュートリアルは[日本語](README.ja.md)でもご覧いただけます。
+🇯🇵 このチュートリアルは[日本語](README.ja.md)でもご覧いただけます。<br/>🇪🇸 Este tutorial también está disponible en
+[español](README.es.md)
 
 ## Contents
 
