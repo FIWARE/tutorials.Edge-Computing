@@ -20,8 +20,8 @@ en forma de tareas de ejecución. Para mejor comprensión, se han incluido ejemp
     -   [Nodo FogFlow Edge](#nodo-fogflow-edge)
 -   [Conectar los dispositivos de IO a FogFlow](#conectar-los-dispositivos-de-io-a-fogflow)
 -   [Orquestación dinámica en los bordes usando FogFlow](#orquestacion-dinamica-en-los-bordes-usando-fogflow)
-    -   [Define and trigger a Fog Function](#define-and-trigger-a-fog-function)
-        -   [Register the Task Operators](#register-the-task-operators)
+    -   [Definir y activar una función de niebla](#definir-y-activar-una-funcion-de-niebla)
+        -   [Registrar los operadores de la tarea](#registrar-los-operadores-de-la-tarea)
         -   [Definir una función de niebla "dummy"](#definir-una-funcion-de-niebla-dummy)
         -   [Desencadenar la función de niebla "dummy"](#desencadenar-la-funcion-de-niebla-dummy)
     -   [Definir y activar una topología de servicio](#definir-y-activar-una-topologia-de-servicio)
@@ -236,7 +236,7 @@ Antes de seguir adelante, los usuarios deben echar un vistazo a lo siguiente:
 -   [Conceptos básicos](https://fogflow.readthedocs.io/en/latest/concept.html) de FogFlow y
 -   [Modelo de programación basado en la intención](https://fogflow.readthedocs.io/en/latest/programming.html)
 
-## Define and trigger a Fog Function
+## Definir y activar una función de niebla
 
 FogFlow permite la computación de borde sin servidor, es decir, los desarrolladores pueden definir y enviar una función
 de niebla junto con el lógica de procesamiento (u operador) y luego el resto será hecho por FogFlow automáticamente,
@@ -246,7 +246,7 @@ incluyendo:
 -   decidir cuántas instancias se crearán de acuerdo con la granularidad definida
 -   decidir dónde desplegar las instancias creadas o los flujos de procesamiento
 
-### Register the Task Operators
+### Registrar los operadores de la tarea
 
 FogFlow permite a los desarrolladores especificar su propio código de función dentro de un operador registrado. Echa un
 vistazo a algunos [ejemplos](https://github.com/smartfog/fogflow/tree/master/application/operator) para saber cómo crear
