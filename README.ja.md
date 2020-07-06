@@ -213,7 +213,7 @@ Bash スクリプトを実行することで、コマンドラインからすべ
 3. Edge IoT Broker と FogFlow Worker の両方を停止します :
 
 ```console
-  ./start.sh
+  ./stop.sh
 ```
 
 <a name="connect-iot-devices-to-fogflow"/>
