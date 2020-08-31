@@ -87,6 +87,7 @@ favor, clone el y crear las imágenes necesarias ejecutando los comandos como se
 ```bash
 git clone https://github.com/FIWARE/tutorials.Edge-Computing.git
 cd tutorials.Edge-Computing
+git checkout NGSI-v2
 
 ./services create
 ```
