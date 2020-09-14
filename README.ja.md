@@ -96,7 +96,7 @@ git checkout NGSI-v2
 ./services create
 ```
 
-その後、リポジトリ内で提供されている[サービス](https://github.com/FIWARE/tutorials.Edge-Computing/blob/master/services)
+その後、リポジトリ内で提供されている[サービス](https://github.com/FIWARE/tutorials.Edge-Computing/blob/NGSI-v2/services)
 Bash スクリプトを実行することで、コマンドラインからすべてのサービスを初期化できます。
 
 ```bash

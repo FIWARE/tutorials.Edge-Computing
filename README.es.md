@@ -94,7 +94,7 @@ git checkout NGSI-v2
 ```
 
 A partir de entonces, todos los servicios pueden ser inicializados desde la línea de comandos ejecutando el
-[servicios](https://github.com/FIWARE/tutorials.Edge-Computing/blob/master/services) El guión Bash proporcionado dentro
+[servicios](https://github.com/FIWARE/tutorials.Edge-Computing/blob/NGSI-v2/services) El guión Bash proporcionado dentro
 de la repositorio:
 
 ```bash

@@ -95,7 +95,7 @@ git checkout NGSI-v2
 ```
 
 Thereafter, all services can be initialized from the command-line by running the
-[services](https://github.com/FIWARE/tutorials.Edge-Computing/blob/master/services) Bash script provided within the
+[services](https://github.com/FIWARE/tutorials.Edge-Computing/blob/NGSI-v2/services) Bash script provided within the
 repository:
 
 ```bash
