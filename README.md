@@ -3,7 +3,6 @@
 
 [![FIWARE Context processing, analysis and visualisation](https://nexus.lab.fiware.org/static/badges/chapters/processing.svg)](https://github.com/FIWARE/catalogue/blob/master/processing/README.md)
 
-
 This is an introductory tutorial for [FIWARE FogFlow](https://fogflow.readthedocs.io/en/latest/) that allows its users
 to dynamically orchestrate the processing flows on edges. It explains how to enable FogFlow on a distributed or a single
 node system, register user defined workload patterns and orchestrate them on the edges in the form of running tasks. For
@@ -262,7 +261,7 @@ content in `function.js` file and build the docker image by running the build fi
 operator.
 
 ```javascript
-exports.handler = function(contextEntity, publish, query, subscribe) {
+exports.handler = function (contextEntity, publish, query, subscribe) {
     console.log("enter into the user-defined fog function");
 
     var entityID = contextEntity.entityId.id;
