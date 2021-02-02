@@ -34,7 +34,7 @@ case "${command}" in
         ;;
 	 "start")
 		stoppingContainers
-		echo -e "Starting eleven containers including \033[1;35mFogFlow\033[0m, an  \033[1mNGINX\033[0m instance, a \033[1mGrafana\033[0m metrics dashboard and \033[RabbitMQ\033[0m message broker."
+		echo -e "Starting eleven containers including \033[1;35mFogFlow\033[0m, an  \033[1mNGINX\033[0m instance, a \033[1mGrafana\033[0m metrics dashboard and \033[1mRabbitMQ\033[0m message broker."
 		echo ""
 		docker-compose --log-level ERROR -p fiware up -d --remove-orphans
 		loadData
