@@ -37,7 +37,6 @@ case "${command}" in
 		echo -e "Starting eleven containers including \033[1;35mFogFlow\033[0m, an  \033[1mNGINX\033[0m instance, a \033[1mGrafana\033[0m metrics dashboard and \033[1mRabbitMQ\033[0m message broker."
 		echo ""
 		docker-compose --log-level ERROR -p fiware up -d --remove-orphans
-		loadData
 		displayServices
 		echo -e "Now open \033[4mhttp://localhost:3000/device/monitor\033[0m"
 		;;
