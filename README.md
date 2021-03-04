@@ -53,7 +53,8 @@ Additional material to understand the developer know-hows, visit
 [FogFlow tutorial](https://fogflow.readthedocs.io/en/latest/introduction.html). FogFlow can also be integrated with
 other FIWARE GEs.
 
--   [Integrate FogFlow with Scorpio Broker](https://fogflow.readthedocs.io/en/latest/scorpioIntegration.html)
+-   **Integrate Fogflow with NGSI-LD Broker**: Fogflow has evolved into a robust platform that supports cloud and edge nodes. The main concept of having distributed edges for edge-computation has evolved with the interaction of Fogflow and other NGSI-LD brokers within Fiware. NGSI-LD technology is the new horizon of data communication and data representation and Fogflow is now a NGSI_LD compliant broker. For detailed information, please refer [this tutorial](https://fogflow.readthedocs.io/en/latest/scorpioIntegration.html).   
+
 -   [Integrate FogFlow with QuantumLeap](https://fogflow.readthedocs.io/en/latest/QuantumLeapIntegration.html)
 -   [Integrate FogFlow with WireCloud](https://fogflow.readthedocs.io/en/latest/wirecloudIntegration.html)
 
