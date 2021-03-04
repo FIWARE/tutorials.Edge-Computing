@@ -113,7 +113,7 @@ Logically, FogFlow consists of the following three layers:
 }
 ```
 
-> # Please Note !
+>  Please Note !
 >
 > please DO NOT use “127.0.0.1” as the IP address of my_hostip, because it is only accessible to a running task inside a docker container.
 > 
@@ -122,7 +122,7 @@ Logically, FogFlow consists of the following three layers:
 > **Mac Users**: if you like to test FogFlow on your Macbook, please install Docker Desktop and also use “host.docker.internal” as my_hostip in the configuration file.
 >
 > If you need to change the port number(s), please make sure the change is consistence in all these three configuration files.
-
+>
 
 2.  Pull the docker images of FogFlow components and start them.
 
