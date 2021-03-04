@@ -97,10 +97,10 @@ Logically, FogFlow consists of the following three layers:
 
 1.  Change the following IP addresses in config.json according to the current environment.
 
-    -   **my_hostip**: public IP address of the FogFlow cloud node.
-    -   **site_id**: unique string-based ID to identify the node in FogFlow system.
-    -   **physical_location**: the geo-location of the node.
-    -   **worker.capacity**: it means the maximal number of docker containers that the FogFlow node can invoke.
+    -   **my_hostip**: Public IP address of the FogFlow cloud node.
+    -   **site_id**: Unique string-based ID to identify the node in FogFlow system.
+    -   **physical_location**: The geo-location of the node.
+    -   **worker.capacity**: It means the maximal number of docker containers that the FogFlow node can invoke. By default its value is "8"
 
 ```json
 {
@@ -109,7 +109,12 @@ Logically, FogFlow consists of the following three layers:
         "longitude": 139.709059,
         "latitude": 35.692221
     },
-    "site_id": "001"
+    "site_id": "001",
+    "worker": {
+        "container_autoremove": false,
+        "start_actual_task": true,
+        "capacity": 8
+    }
 }
 ```
 
@@ -155,7 +160,7 @@ Logically, FogFlow consists of the following three layers:
 
 ![](https://fiware.github.io/tutorials.Edge-Computing/img/dashboard.png)
 
-## FogFlow Edge Node
+## Setup FogFlow Edge Node
 
 **Prerequisites** for starting up an edge node are as follows:
 
@@ -165,13 +170,12 @@ Logically, FogFlow consists of the following three layers:
 **To start the installation, do the following:**
 
 1.  Change the configuration file similar to the cloud node, but now coreservice_ip will remain uniform because it is
-    the IP address of the cloud node.
+    the IP address of the cloud node. **"my_hostip"** will change to the public IP address of edge node.
 
 ```json
 {
     "coreservice_ip": "10.156.0.9",
-    "external_hostip": "10.156.0.10",
-    "internal_hostip": "172.17.0.1",
+    "my_hostip": "172.17.0.1",
     "physical_location": {
         "longitude": 138.709059,
         "latitude": 36.692221
