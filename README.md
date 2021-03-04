@@ -212,13 +212,11 @@ data flow from broker towards the actuator devices. FogFlow relies on this bi-di
 actual idea behind it.
 
 To receive data from the sensor devices, refer
-[connect to a sensor device](https://fogflow.readthedocs.io/en/latest/example3.html). The tutorial contains examples of
-both NGSI and Non-NGSI devices.
+[connect to a sensor device](https://fogflow.readthedocs.io/en/latest/integration.html#northbound-integration). The tutorial contains examples of both NGSI and Non-NGSI devices.
 
 FogFlow can change the state of connected actuator devices, such as, locking a door, switching on a lamp, turning a
 shield on or off, etc. through its dynamic processing flows. To **connect to an actuator device**, refer
-[Integrate an actuator device with FogFlow](https://fogflow.readthedocs.io/en/latest/example5.html). This tutorial also
-contains examples of both NGSI and Non-NGSI devices (especially, the UltraLight and MQTT ones).
+[Integrate an actuator device with FogFlow](https://fogflow.readthedocs.io/en/latest/integration.html#southbound-integration). This tutorial also contains examples of both NGSI and Non-NGSI devices (especially, the UltraLight and MQTT ones).
 
 To get a basic idea of how Southbound actually works in the context of FIWARE, refer
 [this](https://fiware-tutorials.readthedocs.io/en/latest/iot-agent/index.html#southbound-traffic-commands) tutorial.
@@ -227,8 +225,8 @@ To get a basic idea of how Southbound actually works in the context of FIWARE, r
 
 Before moving further, users must have a look at the following:
 
--   [Core concepts](https://fogflow.readthedocs.io/en/latest/concept.html) of FogFlow and
--   [Intent-based programming model](https://fogflow.readthedocs.io/en/latest/programming.html)
+-   [Core concepts](https://fogflow.readthedocs.io/en/latest/core_concept.html) of FogFlow and
+-   [Intent-based programming model](https://fogflow.readthedocs.io/en/latest/intent_based_program.html)
 
 ## Define and trigger a Fog Function
 
