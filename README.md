@@ -260,7 +260,11 @@ The following steps are required to register an operator in Fogflow.
 
 To register Operator, open fogflow dashboard. Select Operator Registry Tab from horizontal bar, select operator from menu on left and then click register button. Right click on workspace and select operator from drop down list and enter details as shown and at last click on submit. 
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/operator-creation.png)
+![](https://fiware.github.io/tutorials.Edge-Computing/img/operator-registry.png)
+
+> Note :
+>
+> User can add  parameters to operator. To define the port for the operator application, use "service_port" and give a valid port number as its value. The application would be accessible to the outer world through this port. 
 
 2.  **Register a Docker Image and choose Operator** to define the docker image and associate an already registered
     Operator with it. The following picture shows the list of registered docker images and the key information of each
