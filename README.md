@@ -80,28 +80,7 @@ Logically, FogFlow consists of the following three layers:
     interfaces provided by the context management layer. Edge workers (and of course the cloud worker) come under this
     layer.
 
-# Start Up
-
-Before you start you should ensure that you have obtained or built the necessary Docker images locally. Please clone the
-repository and create the necessary images by running the commands as shown:
-
-```bash
-git clone https://github.com/FIWARE/tutorials.Edge-Computing.git
-cd tutorials.Edge-Computing
-git checkout NGSI-v2
-
-./services create
-```
-
-Thereafter, all services can be initialized from the command-line by running the
-[services](https://github.com/FIWARE/tutorials.Edge-Computing/blob/NGSI-v2/services) Bash script provided within the
-repository:
-
-```bash
-./services start
-```
-
-## FogFlow Cloud Node
+## Setup FogFlow Cloud Node
 
 **Prerequisites** for starting up a cloud node are as follows:
 
@@ -118,17 +97,14 @@ repository:
 
 1.  Change the following IP addresses in config.json according to the current environment.
 
-    -   **coreservice_ip**: public IP address of the FogFlow cloud node.
-    -   **external_hostip**: public IP address of the current cloud/edge node;
-    -   **internal_hostip**: IP address of "docker0" network interface on the current node.
-    -   **site_id**: unique string-based ID to identify the node in FogFlow system;
-    -   **physical_location**: the geo-location of the node;
+    -   **my_hostip**: public IP address of the FogFlow cloud node.
+    -   **site_id**: unique string-based ID to identify the node in FogFlow system.
+    -   **physical_location**: the geo-location of the node.
+    -   **worker.capacity**: it means the maximal number of docker containers that the FogFlow node can invoke.
 
 ```json
 {
-    "coreservice_ip": "10.156.0.9",
-    "external_hostip": "10.156.0.9",
-    "internal_hostip": "172.17.0.1",
+    "my_hostip": "10.156.0.9",
     "physical_location": {
         "longitude": 139.709059,
         "latitude": 35.692221
@@ -136,6 +112,17 @@ repository:
     "site_id": "001"
 }
 ```
+
+> # Please Note !
+>
+> please DO NOT use “127.0.0.1” as the IP address of my_hostip, because it is only accessible to a running task inside a docker container.
+> 
+> **Firewall rules**: to make your FogFlow web portal accessible, the following ports 80 and 5672 over TCP must be open.
+>
+> **Mac Users**: if you like to test FogFlow on your Macbook, please install Docker Desktop and also use “host.docker.internal” as my_hostip in the configuration file.
+>
+> If you need to change the port number(s), please make sure the change is consistence in all these three configuration files.
+
 
 2.  Pull the docker images of FogFlow components and start them.
 
