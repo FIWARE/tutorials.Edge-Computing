@@ -246,68 +246,21 @@ processing logic (or operator) and then the rest will be done by FogFlow automat
 ### Register the Task Operators
 
 FogFlow allows the developers to specify their own function code inside a registered operator. Check out some
-[examples](https://github.com/smartfog/fogflow/tree/master/application/operator) to know how to create a customized
+[examples](https://github.com/smartfog/fogflow/tree/master/application/operator) and this [tutorial](https://fogflow.readthedocs.io/en/latest/intent_based_program.html#provide-the-code-of-your-own-function) to know how to create a customized
 operator.
 
 Python, Java and JavaScript templates to write an operator can be found
 [here](https://github.com/FIWARE/tutorials.Edge-Computing/tree/master/templates).
 
-For the current tutorial, refer the
-[dummy operator code](https://github.com/FIWARE/tutorials.Edge-Computing/tree/master/dummy). Replace the following
-content in `function.js` file and build the docker image by running the build file. This image can be used as an
-operator.
-
-```javascript
-exports.handler = function(contextEntity, publish, query, subscribe) {
-    console.log("enter into the user-defined fog function");
-
-    var entityID = contextEntity.entityId.id;
-
-    if (contextEntity == null) {
-        return;
-    }
-    if (contextEntity.attributes == null) {
-        return;
-    }
-
-    var updateEntity = {};
-    updateEntity.entityId = {
-        id: "Stream.result." + entityID,
-        type: "result",
-        isPattern: false
-    };
-    updateEntity.attributes = {};
-    updateEntity.attributes.city = {
-        type: "string",
-        value: "Heidelberg"
-    };
-
-    updateEntity.metadata = {};
-    updateEntity.metadata.location = {
-        type: "point",
-        value: {
-            latitude: 33.0,
-            longitude: -1.0
-        }
-    };
-
-    console.log("publish: ", updateEntity);
-    publish(updateEntity);
-};
-```
+For the current tutorial, refer the below mentioned steps.
 
 The following steps are required to register an operator in Fogflow.
 
-1.  **Register an Operator** to define what would be the name of Operator and what input parameters it would need. The
-    following picture shows the list of all registered operators.
+1.  **Register an Operator** to define what would be the name of Operator and what input parameters it would need. 
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/operator-list.png)
+To register Operator, open fogflow dashboard. Select Operator Registry Tab from horizontal bar, select operator from menu on left and then click register button. Right click on workspace and select operator from drop down list and enter details as shown and at last click on submit. 
 
-To register a new operator, click on "register" button, create an operator and add parameters to it. To define the port
-for the operator application, use "service_port" and give a valid port number as its value. The application would be
-accessible to the outer world through this port.
-
-![](https://fiware.github.io/tutorials.Edge-Computing/img/operator-registry.png)
+![](https://fiware.github.io/tutorials.Edge-Computing/img/operator-creation.png)
 
 2.  **Register a Docker Image and choose Operator** to define the docker image and associate an already registered
     Operator with it. The following picture shows the list of registered docker images and the key information of each
