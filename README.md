@@ -262,7 +262,7 @@ To register Operator, open fogflow dashboard. Select Operator Registry Tab from 
 
 ![](https://fiware.github.io/tutorials.Edge-Computing/img/operator-registry.png)
 
-> Note :
+> **Note :**
 >
 > User can add  parameters to operator. To define the port for the operator application, use "service_port" and give a valid port number as its value. The application would be accessible to the outer world through this port. 
 
