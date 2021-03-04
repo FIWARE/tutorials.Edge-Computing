@@ -113,13 +113,13 @@ Logically, FogFlow consists of the following three layers:
 }
 ```
 
-> **_Please Note !_**
+> ## Important !
 >
-> please DO NOT use “127.0.0.1” as the IP address of my_hostip, because it is only accessible to a running task inside a docker container.
+> Please DO NOT use “127.0.0.1” as the IP address of my_hostip, because it is only accessible to a running task inside a docker container.
 > 
-> **Firewall rules**: to make your FogFlow web portal accessible, the following ports 80 and 5672 over TCP must be open.
+> **Firewall rules**: To make your FogFlow web portal accessible, the following ports 80 and 5672 over TCP must be open.
 >
-> **Mac Users**: if you like to test FogFlow on your Macbook, please install Docker Desktop and also use “host.docker.internal” as my_hostip in the configuration file.
+> **Mac Users**: If you like to test FogFlow on your Macbook, please install Docker Desktop and also use “host.docker.internal” as my_hostip in the configuration file.
 >
 > If you need to change the port number(s), please make sure the change is consistence in all these three configuration files.
 >
