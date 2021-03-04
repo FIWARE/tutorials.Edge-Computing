@@ -113,7 +113,7 @@ Logically, FogFlow consists of the following three layers:
 }
 ```
 
->  Please Note !
+> **_Please Note !_**
 >
 > please DO NOT use “127.0.0.1” as the IP address of my_hostip, because it is only accessible to a running task inside a docker container.
 > 
