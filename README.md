@@ -49,39 +49,6 @@ this tutorial, which are relatable to the figure below.
 3.  FogFlow orchestrates processing flows at edges in no time. These processing flows may change the state of an
     actuator or publish some data back to FogFlow, it is all about what user wants to do.
 
-Additional material to understand the developer know-hows, visit
-[FogFlow tutorial](https://fogflow.readthedocs.io/en/latest/introduction.html). FogFlow can also be integrated with
-other FIWARE GEs.
-
--   **Integrate FogFlow with NGSI-LD Broker**: FogFlow has evolved into a robust platform that supports cloud and edge
-    nodes. The main concept of having distributed edges for edge-computation has evolved with the interaction of Fogflow
-    and other NGSI-LD brokers. NGSI-LD technology is the new horizon of data communication and data representation.
-    Fogflow is now a NGSI_LD compliant broker. For detailed information, please refer this
-    [tutorial](https://fogflow.readthedocs.io/en/latest/scorpioIntegration.html).
-
--   **Integrate FogFlow with Monitoring Tools**: FogFlow has a distributed architecture and therefore it generates a
-    need to monitor the distributed components of Fogflow from a platform. For this cause Fogflow has integrated grafana
-    and elastisearch, to monitor various components like memory utilisation, CPU utilisation and services current state
-    etc.. To have more details over this topic, follow this
-    [tutorial](https://fogflow.readthedocs.io/en/latest/system_monitoring.html).
-
--   **Integrate FogFlow with Security Components**: FogFlow has enhanced itself, by supporting security features. The
-    communication between IoT devices and edges, and communication between cloud and edge has been secured using IDM
-    (Identity Manager - Keyrock) and Wilma (PEP-Proxy). To know more about the security setup in FogFlow, follow this
-    [tutorial](https://fogflow.readthedocs.io/en/latest/https.html#secure-fogflow-using-identity-management).
-
--   **Integrate FogFlow with QuantumLeap**: FogFlow can integrate with QuantumLeap, which is a REST service for storing,
-    querying and retrieving NGSIv2 spatial-temporal data. QuantumLeap converts NGSI semi-structured data into tabular
-    format and stores it in a time-series database. This has opened up new possibilities for utilising FogFlow in
-    different scenarios. For more on this, refer the
-    [tutorial](https://fogflow.readthedocs.io/en/latest/quantumleapIntegration.html).
-
--   **Integrate FogFlow with WireCloud**: FogFlow has pitched in with different and versatile edge platform technology.
-    WireCloud builds on cutting-edge end-user development, RIA and semantic technologies to offer a next-generation
-    end-user centred web application mashup platform aimed at leveraging the long tail of the Internet of Services. For
-    more on Fogflow and WireCloud, follow the
-    [tutorial](https://fogflow.readthedocs.io/en/latest/wirecloudIntegration.html).
-
 <hr class="processing"/>
 
 # Architecture
@@ -388,6 +355,8 @@ fog function automatically.
 The other way to trigger the fog function is to send an NGSI entity update in the form of a POST request to the FogFlow
 broker to create the "Temperature" sensor entity.
 
+#### :one: Request
+
 ```console
 curl -iX POST \
   'http://localhost:8080/ngsi10/updateContext' \
@@ -531,6 +500,8 @@ Here are curl examples to send Input streams for Anomaly-Detector use case. It r
 >
 > The Curl case assumes that the cloud IoT Broker is running on localhost on port 8070.
 
+#### :two: Request
+
 ```console
 curl -iX POST \
   'http://localhost:8070/ngsi10/updateContext' \
@@ -577,8 +548,38 @@ also be visible in the Streams menu on FogFlow dashboard.
 
 # Next Steps
 
-Want to learn how to add more complexity to your application by adding advanced features? You can find out by reading
-the other [tutorials in this series](https://fiware-tutorials.rtfd.io)
+For additional material to understand how FogFlow works, visit
+[FogFlow tutorial](https://fogflow.readthedocs.io/en/latest/introduction.html). FogFlow can also be integrated with
+other FIWARE GEs.
+
+-   **Integrate FogFlow with NGSI-LD Broker**: FogFlow has evolved into a robust platform that supports cloud and edge
+    nodes. The main concept of having distributed edges for edge-computation has evolved with the interaction of Fogflow
+    and other NGSI-LD brokers. NGSI-LD technology is the new horizon of data communication and data representation.
+    Fogflow is now a NGSI_LD compliant broker. For detailed information, please refer this
+    [tutorial](https://fogflow.readthedocs.io/en/latest/scorpioIntegration.html).
+
+-   **Integrate FogFlow with Monitoring Tools**: FogFlow has a distributed architecture and therefore it generates a
+    need to monitor the distributed components of Fogflow from a platform. For this cause Fogflow has integrated grafana
+    and elastisearch, to monitor various components like memory utilisation, CPU utilisation and services current state
+    etc.. To have more details over this topic, follow this
+    [tutorial](https://fogflow.readthedocs.io/en/latest/system_monitoring.html).
+
+-   **Integrate FogFlow with Security Components**: FogFlow has enhanced itself, by supporting security features. The
+    communication between IoT devices and edges, and communication between cloud and edge has been secured using IDM
+    (Identity Manager - Keyrock) and Wilma (PEP-Proxy). To know more about the security setup in FogFlow, follow this
+    [tutorial](https://fogflow.readthedocs.io/en/latest/https.html#secure-fogflow-using-identity-management).
+
+-   **Integrate FogFlow with QuantumLeap**: FogFlow can integrate with QuantumLeap, which is a REST service for storing,
+    querying and retrieving NGSI-v2 spatial-temporal data. QuantumLeap converts NGSI semi-structured data into tabular
+    format and stores it in a time-series database. This has opened up new possibilities for utilising FogFlow in
+    different scenarios. For more on this, refer the
+    [tutorial](https://fogflow.readthedocs.io/en/latest/quantumleapIntegration.html).
+
+-   **Integrate FogFlow with WireCloud**: FogFlow has pitched in with different and versatile edge platform technology.
+    WireCloud builds on cutting-edge end-user development, RIA and semantic technologies to offer a next-generation
+    end-user centred web application mashup platform aimed at leveraging the long tail of the Internet of Services. For
+    more on Fogflow and WireCloud, follow the
+    [tutorial](https://fogflow.readthedocs.io/en/latest/wirecloudIntegration.html).
 
 ---
 
