@@ -53,15 +53,34 @@ Additional material to understand the developer know-hows, visit
 [FogFlow tutorial](https://fogflow.readthedocs.io/en/latest/introduction.html). FogFlow can also be integrated with
 other FIWARE GEs.
 
--   **Integrate FogFlow with NGSI-LD Broker**: FogFlow has evolved into a robust platform that supports cloud and edge nodes. The main concept of having distributed edges for edge-computation has evolved with the interaction of Fogflow and other NGSI-LD brokers. NGSI-LD technology is the new horizon of data communication and data representation. Fogflow is now a NGSI_LD compliant broker. For detailed information, please refer this [tutorial](https://fogflow.readthedocs.io/en/latest/scorpioIntegration.html).   
+-   **Integrate FogFlow with NGSI-LD Broker**: FogFlow has evolved into a robust platform that supports cloud and edge
+    nodes. The main concept of having distributed edges for edge-computation has evolved with the interaction of Fogflow
+    and other NGSI-LD brokers. NGSI-LD technology is the new horizon of data communication and data representation.
+    Fogflow is now a NGSI_LD compliant broker. For detailed information, please refer this
+    [tutorial](https://fogflow.readthedocs.io/en/latest/scorpioIntegration.html).
 
--   **Integrate FogFlow with Monitoring Tools**: FogFlow has a distributed architecture and therefore it generates a need to monitor the distributed components of Fogflow from a platform. For this cause Fogflow has integrated grafana and elastisearch, to monitor various components like memory utilisation, CPU utilisation and services current state etc.. To have more details over this topic, follow this [tutorial](https://fogflow.readthedocs.io/en/latest/system_monitoring.html).
+-   **Integrate FogFlow with Monitoring Tools**: FogFlow has a distributed architecture and therefore it generates a
+    need to monitor the distributed components of Fogflow from a platform. For this cause Fogflow has integrated grafana
+    and elastisearch, to monitor various components like memory utilisation, CPU utilisation and services current state
+    etc.. To have more details over this topic, follow this
+    [tutorial](https://fogflow.readthedocs.io/en/latest/system_monitoring.html).
 
--   **Integrate FogFlow with Security Components**: FogFlow has enhanced itself, by supporting security features. The communication between IoT devices and edges, and communication between cloud and edge has been secured using IDM (Identity Manager - Keyrock) and Wilma (PEP-Proxy). To know more about the security setup in FogFlow, follow this [tutorial](https://fogflow.readthedocs.io/en/latest/https.html#secure-fogflow-using-identity-management).
+-   **Integrate FogFlow with Security Components**: FogFlow has enhanced itself, by supporting security features. The
+    communication between IoT devices and edges, and communication between cloud and edge has been secured using IDM
+    (Identity Manager - Keyrock) and Wilma (PEP-Proxy). To know more about the security setup in FogFlow, follow this
+    [tutorial](https://fogflow.readthedocs.io/en/latest/https.html#secure-fogflow-using-identity-management).
 
--   **Integrate FogFlow with QuantumLeap**: FogFlow can integrate with QuantumLeap, which is a REST service for storing, querying and retrieving NGSIv2 spatial-temporal data. QuantumLeap converts NGSI semi-structured data into tabular format and stores it in a time-series database. This has opened up new possibilities for utilising FogFlow in different scenarios. For more on this, refer the [tutorial](https://fogflow.readthedocs.io/en/latest/quantumleapIntegration.html).
+-   **Integrate FogFlow with QuantumLeap**: FogFlow can integrate with QuantumLeap, which is a REST service for storing,
+    querying and retrieving NGSIv2 spatial-temporal data. QuantumLeap converts NGSI semi-structured data into tabular
+    format and stores it in a time-series database. This has opened up new possibilities for utilising FogFlow in
+    different scenarios. For more on this, refer the
+    [tutorial](https://fogflow.readthedocs.io/en/latest/quantumleapIntegration.html).
 
--   **Integrate FogFlow with WireCloud**: FogFlow has pitched in with different and versatile edge platform technology. WireCloud builds on cutting-edge end-user development, RIA and semantic technologies to offer a next-generation end-user centred web application mashup platform aimed at leveraging the long tail of the Internet of Services. For more on Fogflow and WireCloud, follow the [tutorial](https://fogflow.readthedocs.io/en/latest/wirecloudIntegration.html).
+-   **Integrate FogFlow with WireCloud**: FogFlow has pitched in with different and versatile edge platform technology.
+    WireCloud builds on cutting-edge end-user development, RIA and semantic technologies to offer a next-generation
+    end-user centred web application mashup platform aimed at leveraging the long tail of the Internet of Services. For
+    more on Fogflow and WireCloud, follow the
+    [tutorial](https://fogflow.readthedocs.io/en/latest/wirecloudIntegration.html).
 
 <hr class="processing"/>
 
@@ -106,7 +125,8 @@ Logically, FogFlow consists of the following three layers:
     -   **my_hostip**: Public IP address of the FogFlow cloud node.
     -   **site_id**: Unique string-based ID to identify the node in FogFlow system.
     -   **physical_location**: The geo-location of the node.
-    -   **worker.capacity**: It means the maximal number of docker containers that the FogFlow node can invoke. By default its value is "8"
+    -   **worker.capacity**: It means the maximal number of docker containers that the FogFlow node can invoke. By
+        default its value is "8"
 
 ```json
 {
@@ -126,14 +146,16 @@ Logically, FogFlow consists of the following three layers:
 
 > ## Important !
 >
-> Please DO NOT use “127.0.0.1” as the IP address of my_hostip, because it is only accessible to a running task inside a docker container.
-> 
+> Please DO NOT use “127.0.0.1” as the IP address of my_hostip, because it is only accessible to a running task inside a
+> docker container.
+>
 > **Firewall rules**: To make your FogFlow web portal accessible, the following ports 80 and 5672 over TCP must be open.
 >
-> **Mac Users**: If you like to test FogFlow on your Macbook, please install Docker Desktop and also use “host.docker.internal” as my_hostip in the configuration file.
+> **Mac Users**: If you like to test FogFlow on your Macbook, please install Docker Desktop and also use
+> “host.docker.internal” as my_hostip in the configuration file.
 >
-> If you need to change the port number(s), please make sure the change is consistence in all these three configuration files.
->
+> If you need to change the port number(s), please make sure the change is consistence in all these three configuration
+> files.
 
 2.  Pull the docker images of FogFlow components and start them.
 
@@ -177,8 +199,8 @@ Logically, FogFlow consists of the following three layers:
 
 **To start the installation, do the following:**
 
-1.  Change the configuration file similar to the cloud node, but now **coreservice_ip** will remain uniform because it is
-    the IP address of the cloud node. **my_hostip** will change to the public IP address of edge node.
+1.  Change the configuration file similar to the cloud node, but now **coreservice_ip** will remain uniform because it
+    is the IP address of the cloud node. **my_hostip** will change to the public IP address of edge node.
 
 ```json
 {
@@ -218,11 +240,13 @@ data flow from broker towards the actuator devices. FogFlow relies on this bi-di
 actual idea behind it.
 
 To receive data from the sensor devices, refer
-[connect to a sensor device](https://fogflow.readthedocs.io/en/latest/integration.html#northbound-integration). The tutorial contains examples of both NGSI and Non-NGSI devices.
+[connect to a sensor device](https://fogflow.readthedocs.io/en/latest/integration.html#northbound-integration). The
+tutorial contains examples of both NGSI and Non-NGSI devices.
 
 FogFlow can change the state of connected actuator devices, such as, locking a door, switching on a lamp, turning a
 shield on or off, etc. through its dynamic processing flows. To **connect to an actuator device**, refer
-[Integrate an actuator device with FogFlow](https://fogflow.readthedocs.io/en/latest/integration.html#southbound-integration). This tutorial also contains examples of both NGSI and Non-NGSI devices (especially, the UltraLight and MQTT ones).
+[Integrate an actuator device with FogFlow](https://fogflow.readthedocs.io/en/latest/integration.html#southbound-integration).
+This tutorial also contains examples of both NGSI and Non-NGSI devices (especially, the UltraLight and MQTT ones).
 
 To get a basic idea of how Southbound actually works in the context of FIWARE, refer
 [this](https://fiware-tutorials.readthedocs.io/en/latest/iot-agent/index.html#southbound-traffic-commands) tutorial.
@@ -246,8 +270,9 @@ processing logic (or operator) and then the rest will be done by FogFlow automat
 ### Register the Task Operators
 
 FogFlow allows the developers to specify their own function code inside a registered operator. Check out some
-[examples](https://github.com/smartfog/fogflow/tree/master/application/operator) and this [tutorial](https://fogflow.readthedocs.io/en/latest/intent_based_program.html#provide-the-code-of-your-own-function) to know how to create a customized
-operator.
+[examples](https://github.com/smartfog/fogflow/tree/master/application/operator) and this
+[tutorial](https://fogflow.readthedocs.io/en/latest/intent_based_program.html#provide-the-code-of-your-own-function) to
+know how to create a customized operator.
 
 Python, Java and JavaScript templates to write an operator can be found
 [here](https://github.com/FIWARE/tutorials.Edge-Computing/tree/master/templates).
@@ -256,15 +281,18 @@ For the current tutorial, refer the below mentioned steps.
 
 The following steps are required to register an operator in Fogflow.
 
-1.  **Register an Operator** means to define what would be the name of Operator and what input parameters it would need. 
+1.  **Register an Operator** means to define what would be the name of Operator and what input parameters it would need.
 
-To register Operator, open fogflow dashboard. Select Operator Registry Tab from horizontal bar, select operator from menu on left and then click register button. Right click on workspace and select operator from drop down list and enter details as shown and at last click on submit. 
+To register Operator, open fogflow dashboard. Select Operator Registry Tab from horizontal bar, select operator from
+menu on left and then click register button. Right click on workspace and select operator from drop down list and enter
+details as shown and at last click on submit.
 
 ![](https://fiware.github.io/tutorials.Edge-Computing/img/operator-registry.png)
 
 > **Note :**
 >
-> User can add  parameters to operator. To define the port for the operator application, use "service_port" and give a valid port number as its value. The application would be accessible to the outer world through this port. 
+> User can add parameters to operator. To define the port for the operator application, use "service_port" and give a
+> valid port number as its value. The application would be accessible to the outer world through this port.
 
 2.  **Register a Docker Image and choose Operator** means to define the docker image and associate an already registered
     Operator with it. The following picture shows the list of registered docker images and the key information of each
