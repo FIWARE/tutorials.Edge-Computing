@@ -59,9 +59,9 @@ other FIWARE GEs.
 
 -   **Integrate FogFlow with Security Components**: FogFlow has enhanced itself, by supporting security features. The communication between IoT devices and edges, and communication between cloud and edge has been secured using IDM (Identity Manager - Keyrock) and Wilma (PEP-Proxy). To start using security components in user's setup, kindly follow this [tutorial](https://fogflow.readthedocs.io/en/latest/https.html#secure-fogflow-using-identity-management).
 
--   **Integrate FogFlow with QuantumLeap**: FogFlow can integrate with QuantumLeap, which is a REST service for storing, querying and retrieving NGSIv2 spatial-temporal data. QuantumLeap converts NGSI semi-structured data into tabular format and stores it in a time-series database. This has opened up new possiblities with utilisation of FogFlow different scenarios. For more on this, refer the [tutorial](https://fogflow.readthedocs.io/en/latest/quantumleapIntegration.html).
+-   **Integrate FogFlow with QuantumLeap**: FogFlow can integrate with QuantumLeap, which is a REST service for storing, querying and retrieving NGSIv2 spatial-temporal data. QuantumLeap converts NGSI semi-structured data into tabular format and stores it in a time-series database. This has opened up new possiblities for utilisating FogFlow in different scenarios. For more on this, refer the [tutorial](https://fogflow.readthedocs.io/en/latest/quantumleapIntegration.html).
 
--   **Integrate FogFlow with WireCloud**: FogFlow has picthed in with different cutting edge platform technology. WireCloud builds on cutting-edge end-user development, RIA and semantic technologies to offer a next-generation end-user centred web application mashup platform aimed at leveraging the long tail of the Internet of Services. For more on Fogflow and WireCloud, follow the [tutorial](https://fogflow.readthedocs.io/en/latest/wirecloudIntegration.html).
+-   **Integrate FogFlow with WireCloud**: FogFlow has picthed in with different and versatile edge platform technology. WireCloud builds on cutting-edge end-user development, RIA and semantic technologies to offer a next-generation end-user centred web application mashup platform aimed at leveraging the long tail of the Internet of Services. For more on Fogflow and WireCloud, follow the [tutorial](https://fogflow.readthedocs.io/en/latest/wirecloudIntegration.html).
 
 <hr class="processing"/>
 
@@ -256,7 +256,7 @@ For the current tutorial, refer the below mentioned steps.
 
 The following steps are required to register an operator in Fogflow.
 
-1.  **Register an Operator** to define what would be the name of Operator and what input parameters it would need. 
+1.  **Register an Operator** means to define what would be the name of Operator and what input parameters it would need. 
 
 To register Operator, open fogflow dashboard. Select Operator Registry Tab from horizontal bar, select operator from menu on left and then click register button. Right click on workspace and select operator from drop down list and enter details as shown and at last click on submit. 
 
@@ -266,7 +266,7 @@ To register Operator, open fogflow dashboard. Select Operator Registry Tab from 
 >
 > User can add  parameters to operator. To define the port for the operator application, use "service_port" and give a valid port number as its value. The application would be accessible to the outer world through this port. 
 
-2.  **Register a Docker Image and choose Operator** to define the docker image and associate an already registered
+2.  **Register a Docker Image and choose Operator** means to define the docker image and associate an already registered
     Operator with it. The following picture shows the list of registered docker images and the key information of each
     image.
 
