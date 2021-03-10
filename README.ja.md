@@ -48,14 +48,6 @@
 3. FogFlow は、エッジでの処理フローをすぐに調整します。これらの処理フローは、アクチュエータの状態を変更したり、一部の
    データを FogFlow にパブリッシュしたりする可能性があります。それはすべて、ユーザが実行したいことに関するものです。
 
-開発者のノウハウを理解するための追加資料として、
-[FogFlowチュートリアル](https://fogflow.readthedocs.io/en/latest/introduction.html) を参照してください。FogFlow は他の
-FIWARE GEs と統合することもできます。
-
--   [FogFlow を Scorpio Brokerと統合](https://fogflow.readthedocs.io/en/latest/scorpioIntegration.html)
--   [FogFlow を QuantumLeapと統合](https://fogflow.readthedocs.io/en/latest/QuantumLeapIntegration.html)
--   [FogFlow を WireCloudと統合](https://fogflow.readthedocs.io/en/latest/wirecloudIntegration.html)
-
 <hr class="processing"/>
 
 <a name="architecture"/>
@@ -81,31 +73,9 @@ FogFlow フレームワークは、クラウド・ノード、エッジ・ノー
 -   **データ処理:** データ処理タスクを起動し、コンテキスト管理レイヤによって提供される pub/sub インターフェースを介して
     タスク間のデータ・フローを確立します。エッジ・ワーカ (そして、もちろんクラウド・ワーカ) はこのレイヤーの下にあります
 
-<a name="start-up"/>
-
-# 起動
-
-起動の前に、必要な Docker イメージをローカルで取得またはビルドしたことを確認する必要があります。以下のコマンドを実行
-して、リポジトリのクローンを作成し、必要なイメージを作成してください。
-
-```bash
-git clone https://github.com/FIWARE/tutorials.Edge-Computing.git
-cd tutorials.Edge-Computing
-git checkout NGSI-v2
-
-./services create
-```
-
-その後、リポジトリ内で提供されている[サービス](https://github.com/FIWARE/tutorials.Edge-Computing/blob/NGSI-v2/services)
-Bash スクリプトを実行することで、コマンドラインからすべてのサービスを初期化できます。
-
-```bash
-./services start
-```
-
 <a name="fogflow-cloud-node"/>
 
-## FogFlow クラウド・ノード
+## FogFlow クラウド・ノード の起動
 
 クラウド・ノードを起動するための**前提条件**は次のとおりです :
 
@@ -122,30 +92,49 @@ Bash スクリプトを実行することで、コマンドラインからすべ
 
 1. 現在の環境に応じて、config.json の次の IP アドレスを変更します
 
-    - **coreservice_ip**: FogFlow クラウド・ノードのパブリック IP アドレス
-    - **external_hostip**: 現在のクラウド/エッジ・ノードのパブリック IP アドレス
-    - **internal_hostip**: 現在のノードの "docker0" ネットワーク・インターフェースの IP アドレス
-    - **site_id**: FogFlow システムでノードを識別するための一意の文字列ベースの ID
-    - **physical_location**: ノードの地理的位置
+    -   **my_hostip**: FogFlow クラウド・ノードのパブリック IP アドレス
+    -   **site_id**: FogFlow システムのノードを識別するための一意の文字列ベースの ID
+    -   **physical_location**: ノードの地理的位置
+    -   **worker.capacity**: これは、FogFlow ノードが呼び出すことができる Docker コンテナの最大数を意味します。
+        デフォルトでは、その値は "8" です
 
 ```json
 {
-    "coreservice_ip": "10.156.0.9",
-    "external_hostip": "10.156.0.9",
-    "internal_hostip": "172.17.0.1",
+    "my_hostip": "10.156.0.9",
     "physical_location": {
         "longitude": 139.709059,
         "latitude": 35.692221
     },
-    "site_id": "001"
+    "site_id": "001",
+    "worker": {
+        "container_autoremove": false,
+        "start_actual_task": true,
+        "capacity": 8
+    }
 }
 ```
+> ## 重要 !
+>
+> my_hostip の IP アドレスとして "127.0.0.1" を使用しないでください。これは、 Docker コンテナ内で実行中のタスクに
+> のみアクセスできるためです。 
+>
+> **ファイアウォール・ルール**: FogFlow Web ポータルにアクセスできるようにするには、TCP 経由でポート 80 および 5672
+> を開く必要があります。
+>
+> **Mac ユーザ**: Macbook で FogFlow をテストする場合は、Docker デスクトップをインストールし、構成ファイルの my_hostip
+  として "host.docker.internal" も使用してください。
+>
+> ポート番号を変更する必要がある場合は、変更がこれら3つの構成ファイルすべてで一貫していることを確認してください。
 
 2. FogFlow コンポーネントの Docker イメージをプルして起動します
 
 ```console
-  docker-compose pull
-  docker-compose up -d
+git clone https://github.com/FIWARE/tutorials.Edge-Computing.git
+cd tutorials.Edge-Computing
+git checkout NGSI-v2
+
+docker-compose pull
+docker-compose up -d
 ```
 
 3. 次の2つの方法のいずれかで FogFlow クラウド・ノードのセットアップを検証します
@@ -153,18 +142,19 @@ Bash スクリプトを実行することで、コマンドラインからすべ
 -   `docker ps -a` を使用して、すべてのコンテナが稼働していることを確認します
 
 ```console
-  docker ps -a
+docker ps -a
 ```
 
 ```text
-  CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                                   NAMES
-  90868b310608        nginx:latest        "nginx -g 'daemon of…"   5 seconds ago       Up 3 seconds        0.0.0.0:80->80/tcp                                      fogflow_nginx_1
-  d4fd1aee2655        fogflow/worker      "/worker"                6 seconds ago       Up 2 seconds                                                                fogflow_cloud_worker_1
-  428e69bf5998        fogflow/master      "/master"                6 seconds ago       Up 4 seconds        0.0.0.0:1060->1060/tcp                                  fogflow_master_1
-  9da1124a43b4        fogflow/designer    "node main.js"           7 seconds ago       Up 5 seconds        0.0.0.0:1030->1030/tcp, 0.0.0.0:8080->8080/tcp          fogflow_designer_1
-  bb8e25e5a75d        fogflow/broker      "/broker"                9 seconds ago       Up 7 seconds        0.0.0.0:8070->8070/tcp                                  fogflow_cloud_broker_1
-  7f3ce330c204        rabbitmq:3          "docker-entrypoint.s…"   10 seconds ago      Up 6 seconds        4369/tcp, 5671/tcp, 25672/tcp, 0.0.0.0:5672->5672/tcp   fogflow_rabbitmq_1
-  9e95c55a1eb7        fogflow/discovery   "/discovery"             10 seconds ago      Up 8 seconds        0.0.0.0:8090->8090/tcp                                  fogflow_discovery_1
+CONTAINER ID   IMAGE                   COMMAND                  CREATED         STATUS         PORTS                                                                                            NAMES
+e412877b4862   nginx:latest            "/docker-entrypoint.…"   2 minutes ago   Up 2 minutes   0.0.0.0:80->80/tcp                                                                               tutorialsedgecomputing_nginx_1
+29ea8555685d   fogflow/master:3.2      "/master"                2 minutes ago   Up 2 minutes   0.0.0.0:1060->1060/tcp                                                                           tutorialsedgecomputing_master_1
+aaa2f29959e7   fogflow/worker:3.2      "/worker"                2 minutes ago   Up 2 minutes                                                                                                    tutorialsedgecomputing_cloud_worker_1
+1298fe46bf1e   fogflow/designer:3.2    "node main.js"           2 minutes ago   Up 2 minutes   0.0.0.0:1030->1030/tcp, 0.0.0.0:8080->8080/tcp                                                   tutorialsedgecomputing_designer_1
+644333fa6215   fogflow/broker:3.2      "/broker"                2 minutes ago   Up 2 minutes   0.0.0.0:8070->8070/tcp                                                                           tutorialsedgecomputing_cloud_broker_1
+acd974d6c040   fogflow/discovery:3.2   "/discovery"             2 minutes ago   Up 2 minutes   0.0.0.0:8090->8090/tcp                                                                           tutorialsedgecomputing_discovery_1
+cce2c64503d9   dgraph/standalone       "/run.sh"                2 minutes ago   Up 2 minutes   0.0.0.0:6080->6080/tcp, 0.0.0.0:8000->8000/tcp, 0.0.0.0:8082->8080/tcp, 0.0.0.0:9082->9080/tcp   tutorialsedgecomputing_dgraph_1
+925d1deb343f   rabbitmq:3              "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes   4369/tcp, 5671/tcp, 15691-15692/tcp, 25672/tcp, 0.0.0.0:5672->5672/tcp                           tutorialsedgecomputing_rabbitmq_1
 ```
 
 -   `http://<coreservice_ip>/index.html` にある FogFlow ダッシュボードからシステム・ステータスを確認します。表示される
@@ -174,7 +164,7 @@ Bash スクリプトを実行することで、コマンドラインからすべ
 
 <a name="fogflow-edge-node"/>
 
-## FogFlow エッジ・ノード
+## FogFlow エッジ・ノード の起動
 
 エッジ・ノードを起動するための**前提条件**は次のとおりです :
 
@@ -183,14 +173,13 @@ Bash スクリプトを実行することで、コマンドラインからすべ
 
 **インストールを開始するには、次のようにします。**
 
-1. 設定ファイルをクラウド・ノードと同様に変更しますが、coreservice_ip はクラウド・ノードの IP アドレスであるため、
-   変更されません。
+1.  クラウド・ノードと同様に構成ファイルを変更しますが、**coreservice_ip** はクラウド・ノードの IP アドレスであるため、
+    統一されたままになります。**my_hostip** はエッジ・ノードのパブリック IP アドレスに変更されます。
 
 ```json
 {
     "coreservice_ip": "10.156.0.9",
-    "external_hostip": "10.156.0.10",
-    "internal_hostip": "172.17.0.1",
+    "my_hostip": "172.17.0.1",
     "physical_location": {
         "longitude": 138.709059,
         "latitude": 36.692221
@@ -227,14 +216,14 @@ Bash スクリプトを実行することで、コマンドラインからすべ
 して、その背後にある実際のアイデアを実現します。
 
 センサ・デバイスからデータを受信するには、
-[センサ・デバイスに接続する](https://fogflow.readthedocs.io/en/latest/example3.html)を参照してください。チュートリアル
-には、NGSI デバイスと非 NGSI デバイスの両方の例が含まれています。
+[センサ・デバイスに接続する]((https://fogflow.readthedocs.io/en/latest/integration.html#northbound-integration)
+を参照してください。チュートリアルには、NGSI デバイスと非 NGSI デバイスの両方の例が含まれています。
 
 FogFlow は、動的な処理フローを通じて、ドアのロック、ランプのスイッチのオン、シールドのオン/オフなど、接続されている
 アクチュエータ・デバイスの状態を変更できます。**アクチュエータ・デバイスに接続する**には、
-[アクチュエータ・デバイスと FogFlow の統合](https://fogflow.readthedocs.io/en/latest/example5.html)を参照してください。
-このチュートリアルには、NGSI デバイスと非 NGSI デバイス (特に、UltraLight デバイスと MQTT デバイス) の例も含まれて
-います。
+[アクチュエータ・デバイスと FogFlow の統合](https://fogflow.readthedocs.io/en/latest/integration.html#southbound-integration)
+を参照してください。このチュートリアルには、NGSI デバイスと非 NGSI デバイス (特に、UltraLight デバイスと MQTT デバイス)
+の例も含まれています。
 
 サウスバウンドが実際に FIWARE のコンテキストでどのように機能するかについての基本的なアイデアを得るには、
 [この](https://fiware-tutorials.readthedocs.io/en/latest/iot-agent/index.html#southbound-traffic-commands)
@@ -246,8 +235,8 @@ FogFlow は、動的な処理フローを通じて、ドアのロック、ラン
 
 先に進む前に、ユーザは以下を確認する必要があります :
 
--   FogFlow の[コア・コンセプト](https://fogflow.readthedocs.io/en/latest/concept.html)
--   [インテント・ベースのプログラミング・モデル](https://fogflow.readthedocs.io/en/latest/programming.html)
+-   FogFlow の[コア・コンセプト](https://fogflow.readthedocs.io/en/latest/core_concept.html)
+-   [インテント・ベースのプログラミング・モデル](https://fogflow.readthedocs.io/en/latest/intent_based_program.html)
 
 <a name="define-and-trigger-a-fog-function"/>
 
@@ -265,68 +254,29 @@ FogFlow はサーバーレス・エッジ・コンピューティングを可能
 ### タスク・オペレータを登録
 
 FogFlow を使用すると、開発者は登録済みオペレータ内で独自のファンクション・コードを指定できます。いくつかの
-[例](https://github.com/smartfog/fogflow/tree/master/application/operator) をチェックして、カスタマイズされた
-オペレータの作成方法を確認してください。
+[例](https://github.com/smartfog/fogflow/tree/master/application/operator) と
+[チュートリアル](https://fogflow.readthedocs.io/en/latest/intent_based_program.html#provide-the-code-of-your-own-function)
+をチェックして、カスタマイズされたオペレータの作成方法を確認してください。
 
 オペレータを作成するための Python, Java, JavaScript テンプレートは
 [こちら](https://github.com/FIWARE/tutorials.Edge-Computing/tree/master/templates)にあります。
 
-現在のチュートリアルについては、
-[ダミー・オペレータ・コード](https://github.com/FIWARE/tutorials.Edge-Computing/tree/master/dummy)
-を参照してください。`function.js` ファイルの次のコンテンツを置き換え、ビルド・ファイルを実行して Docker イメージを
-ビルドします。このイメージはオペレータとして使用できます。
+現在のチュートリアルについては、以下の手順を参照してください:
 
-```javascript
-exports.handler = function(contextEntity, publish, query, subscribe) {
-    console.log("enter into the user-defined fog function");
+FogFlow にオペレータを登録するには、次の手順が必要です。
 
-    var entityID = contextEntity.entityId.id;
+1.  **オペレータの登録**とは、オペレータの名前と必要な入力パラメータを定義することを意味します。
 
-    if (contextEntity == null) {
-        return;
-    }
-    if (contextEntity.attributes == null) {
-        return;
-    }
-
-    var updateEntity = {};
-    updateEntity.entityId = {
-        id: "Stream.result." + entityID,
-        type: "result",
-        isPattern: false
-    };
-    updateEntity.attributes = {};
-    updateEntity.attributes.city = {
-        type: "string",
-        value: "Heidelberg"
-    };
-
-    updateEntity.metadata = {};
-    updateEntity.metadata.location = {
-        type: "point",
-        value: {
-            latitude: 33.0,
-            longitude: -1.0
-        }
-    };
-
-    console.log("publish: ", updateEntity);
-    publish(updateEntity);
-};
-```
-
-Fogflow にオペレータを登録するには、次の手順が必要です。
-
-1. **オペレータを登録**して、オペレータの名前と必要な入力パラメータを定義します。次の図は、すべての登録済みオペレータの
-   リストを示しています
-
-![](https://fiware.github.io/tutorials.Edge-Computing/img/operator-list.png)
-
-新しいオペレータを登録するには、"register" ボタンをクリックし、オペレータを作成してパラメータを追加します。オペレータ・
-アプリケーションのポートを定義するには、"service_port" を使用し、その値として有効なポート番号を指定します。
-アプリケーションは、このポートを介して外部からアクセスできます。
+オペレータを登録するには、FogFlow ダッシュボードを開きます。水平バーから "Operator Registry" タブを選択し、左側の
+メニューから "Operator Registry" を選択して、"Register" ボタンをクリックします。ワークスペースを右クリックし、
+ドロップ・ダウン・リストからオペレータを選択して、詳細を入力し、最後に送信をクリックします。
 
 ![](https://fiware.github.io/tutorials.Edge-Computing/img/operator-registry.png)
+
+> **注:**
+>
+> ユーザはオペレータにパラメータを追加できます。オペレータ・アプリケーションのポートを定義するには、"service_port"
+> を使用し、その値として有効なポート番号を指定します。アプリケーションは、このポートを介して外部からアクセスできます。
 
 2. **Docker イメージを登録し、オペレータを選択して**、Docker イメージを定義し、すでに登録されているオペレータを関連付け
    ます。次の図は、登録済みの Docker イメージのリストと各イメージの重要な情報を示しています。
@@ -422,6 +372,8 @@ System Status タブの Device メニューに移動します。以下の情報�
 
 Fog ファンクションをトリガーするもう1つの方法は、POST リクエストの形式で NGSI エンティティの更新を FogFlow broker に
 送信して、"Temperature" センサ・エンティティを作成することです。
+
+#### :one: リクエスト:
 
 ```console
 curl -iX POST \
@@ -573,6 +525,8 @@ Anomaly-Detector の使用例の入力ストリームを送信するための Cu
 >
 > Curl のケースでは、クラウド IoT Broker がポート 8070 の localhost で実行されていると想定しています。
 
+#### :two: リクエスト:
+
 ```console
 curl -iX POST \
   'http://localhost:8070/ngsi10/updateContext' \
@@ -614,6 +568,42 @@ FogFlow ダッシュボードの Streams メニューにも表示されます。
 
 # 次のステップ
 
+FogFlow がどのように機能するかを理解するための追加資料については、
+[FogFlow チュートリアル](https://fogflow.readthedocs.io/en/latest/introduction.html)
+にアクセスしてください。 FogFlow は、他の FIWARE GEs と統合することもできます。
+
+-   **FogFlow を NGSI-LD Broker と統合**: FogFlow は、クラウド・ノードとエッジ・ノードをサポートする堅牢なプラット
+    フォームに進化しました。 エッジ・コンピューティングのためにエッジを分散させるという主な概念は、FogFlow と他の
+    NGSI-LD Broker の相互作用によって進化しました。NGSI-LD テクノロジは、データ通信とデータ表現の新しい地平です。
+    FogFlow は NGSI_LD 準拠のブローカーになりました。詳細については、
+    この[チュートリアル](https://fogflow.readthedocs.io/en/latest/scorpioIntegration.html)を参照してください
+
+-   **FogFlow を監視ツールと統合**: FogFlow は分散アーキテクチャを備えているため、プラットフォームから FogFlow
+    の分散コンポーネントを監視する必要があります。このため、FogFlow は Grafana と Elastisearch を統合して、
+    メモリ使用率、CPU 使用率、サービスの現在の状態などのさまざまなコンポーネントを監視しています。このトピックの
+    詳細については、この[チュートリアル](https://fogflow.readthedocs.io/en/latest/system_monitoring.html)
+    を参照してください
+
+-   **FogFlow をセキュリティコンポーネントと統合**: FogFlow は、セキュリティ機能をサポートすることにより、
+    それ自体を強化しました。IoT デバイスとエッジ間の通信、およびクラウドとエッジ間の通信は、IDM (Identity Manager
+    Keyrock) と Wilma (PEP Proxy) を使用して保護されています。FogFlow のセキュリティ設定の詳細については、この
+    [チュートリアル](https://fogflow.readthedocs.io/en/latest/https.html#secure-fogflow-using-identity-management)
+    を参照してください
+
+-   **FogFlow を QuantumLeap と統合**: FogFlow は、NGSI v2 の時空間データを保存、クエリ、取得するための REST
+    サービスである QuantumLeap と統合できます。QuantumLeap は、NGSI の半構造化データを表形式に変換し、
+    時系列データベースに保存します。これにより、さまざまなシナリオで FogFlow を利用するための新しい可能性が
+    開かれました。 詳細については、
+    [チュートリアル](https://fogflow.readthedocs.io/en/latest/quantumleapIntegration.html)
+    を参照してください
+
+-   **FogFlow を WireCloud と統合**: FogFlow は、さまざまな用途の広いエッジ・プラットフォーム・テクノロジを
+    採用しています。WireCloud は、最先端のエンドユーザ開発、RIA、およびセマンティック・テクノロジに基づいて
+    構築されており、サービスのインターネットのロングテールを活用することを目的とした次世代のエンドユーザ中心の
+    Web アプリケーション・マッシュアップ・プラットフォームを提供します。Fogflow と WireCloud の詳細については、
+    [チュートリアル](https://fogflow.readthedocs.io/en/latest/wirecloudIntegration.html)
+    を参照してください
+
 高度な機能を追加することで、アプリケーションに複雑さを加える方法を知りたいですか？このシリーズの
 [他のチュートリアル](https://www.letsfiware.jp/fiware-tutorials)を読むことで見つけることができます
 
@@ -621,4 +611,4 @@ FogFlow ダッシュボードの Streams メニューにも表示されます。
 
 ## License
 
-[MIT](LICENSE) © 2020 FIWARE Foundation e.V.
+[MIT](LICENSE) © 2020-2021 FIWARE Foundation e.V.
