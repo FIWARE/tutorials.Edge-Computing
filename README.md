@@ -49,13 +49,13 @@ this tutorial, which are relatable to the figure below.
 3.  FogFlow orchestrates processing flows at edges in no time. These processing flows may change the state of an
     actuator or publish some data back to FogFlow, it is all about what user wants to do.
 
+
 <hr class="processing"/>
 
 # Architecture
 
 The FogFlow framework operates on a geo-distributed, hierarchical, and heterogeneous ICT infrastructure that includes
-cloud nodes, edge nodes, and IoT devices. The following figure illustrates the system architecture of FogFlow and its
-major components across three logical layers.
+cloud nodes, edge nodes, and IoT devices. Now, Fogflow has become more dynamic because it supports NGSI-LD format, that means Fogflow is now NGSI-LD compliant. The following figure illustrates the system architecture of FogFlow and its major components across three logical layers.
 
 ![](https://fiware.github.io/tutorials.Edge-Computing/img/architecture.png)
 
@@ -71,6 +71,15 @@ Logically, FogFlow consists of the following three layers:
 -   **data processing:** launches data processing tasks and establish data flows between tasks via the pub/sub
     interfaces provided by the context management layer. Edge workers (and of course the cloud worker) come under this
     layer.
+
+# NGSI-LD Support In Fogflow
+
+The FIWARE NGSI v2 information model has been evolved to better support linked data (entity relationships), property graphs and semantics (exploiting the capabilities offered by JSON-LD). The new era of data representation and data utilisation has opened up new horizion of possiblities with Fogflow. With the incorporation of NGSI-LD support, Fogflow has gained the power of interacting with other NGSI-LD compliant broker to build a more robust architecture and potential use cases.
+
+To know more about NGSI-LD supported API's in Fogflow, follow this [link](https://fogflow.readthedocs.io/en/latest/api.html#ngsi-ld-supported-api-s)
+
+![](https://fogflow.readthedocs.io/en/latest/_images/ngsild_architecture.png) 
+
 
 ## Setup FogFlow Cloud Node
 
