@@ -57,7 +57,7 @@ this tutorial, which are relatable to the figure below.
 The FogFlow framework operates on a geo-distributed, hierarchical, and heterogeneous ICT infrastructure that includes
 cloud nodes, edge nodes, and IoT devices. Now, Fogflow has become more dynamic because it supports NGSI-LD format, that means Fogflow is now NGSI-LD compliant. The following figure illustrates the system architecture of FogFlow and its major components across three logical layers.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/architecture.png)
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/Ngsi-ld-architecture.png)
 
 ## Layered Architecture
 
