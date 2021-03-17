@@ -250,7 +250,7 @@ FogFlow allows the developers to specify their own function code inside a regist
 know how to create a customized operator.
 
 Python, Java and JavaScript templates to write an operator can be found
-[here](https://github.com/FIWARE/tutorials.Edge-Computing/tree/master/templates).
+[here](https://github.com/pradumnnec/tutorials.Edge-Computing/tree/NSGI-LD/template).
 
 For the current tutorial, refer the below mentioned steps.
 
