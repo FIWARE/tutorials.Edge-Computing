@@ -263,7 +263,7 @@ To register Operator, open fogflow dashboard. Select Operator Registry Tab from 
 menu on left and then click register button. Right click on workspace and select operator from drop down list and enter
 details as shown and at last click on submit.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/operator-registry.png)
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/operator_creation.png)
 
 > **Note :**
 >
@@ -291,9 +291,9 @@ The form is explained as the following.
     otherwise, the operator docker image is fetched on demand, only when edge nodes need to run a scheduled task
     associated with this operator.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/dockerimage-registry.png)
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/docker_image_registry.png)
 
-### Define a "dummy" Fog Function
+### Define a "OverSpeed_Vehicle" Fog Function
 
 Right click inside the task design board, a menu will be displayed that includes:
 
@@ -301,20 +301,20 @@ Right click inside the task design board, a menu will be displayed that includes
     output streams.
 -   **EntityStream**: is the input data element which can be linked with a fog function Task as its input data stream.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-1.png)
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/Fog_ff_1.png)
 
 Choose "Task", a Task element will be placed on the design board, as shown below.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-2.png)
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/Fog_ff_2.png)
 
 Click the configuration button on the top-right corner of the task element, as illustrated in the following figure.
 Specify the name of the Task and choose an operator out of a list of some pre-registered operators.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-3.png)
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/Fog_ff_3.png)
 
 Add an "EntityStream" from the pop-up menu to the design board.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-4.png)
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/Fog_ff_4.png)
 
 It contains the following fields:
 
@@ -332,19 +332,16 @@ It contains the following fields:
 Configure the EntityStream by clicking on its configuration button as shown below. "Temperature" is shown as example
 here, as is the entity type of input data for the "dummy" fog function.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-5.png)
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/Fog_ff_5.png)
 
-There can be multiple EntityStreams for a Task and they must be connected to the Task as shown below.
+There can be multiple EntityStreams for a Task and they must be connected to the Task as shown below. After this click on submit button.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-6.png)
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/Fog_ff_6.png)
 
-Submit the Fog Function.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-7.png)
+### Trigger the "OverSpeed_Vehicle" Fog Function
 
-### Trigger the "dummy" Fog Function
-
-The defined "Dummy" fog function is triggered only when its required input data are available.
+The defined "OverSpeed_Vehicle" fog function is triggered only when its required input data are available.
 
 One way is to register a "Temperature" sensor device as shown below.
 
