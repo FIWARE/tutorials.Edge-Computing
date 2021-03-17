@@ -337,8 +337,8 @@ It contains the following fields:
     recorded in the Entity and False is used in case of broadcasted data, for example, some rule or threshold data that
     holds true for all locations, not for a specific location.
 
-Configure the EntityStream by clicking on its configuration button as shown below. "Temperature" is shown as example
-here, as is the entity type of input data for the "dummy" fog function.
+Configure the EntityStream by clicking on its configuration button as shown below. "Vehicle" is shown as example
+here, as it is the entity type of input data for the "overspeed_vehicle" fog function.
 
 ![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/Fog_ff_5.png)
 
