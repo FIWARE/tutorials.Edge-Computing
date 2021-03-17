@@ -427,7 +427,7 @@ the rule for anomaly detection.
 
 ### Implement the Operator Functions
 
-Users can implement there own set of computations in form of operator. For designing and implementing a service topology, it is necessary to implement an operation in corresponding data format. For example, if service topology comprises of NGSI-LD data format, then it is important that operators are designed keeping NGSI-LD format in mind.
+Users can implement there own set of computations in form of operator. For designing and implementing a service topology, it is necessary to implement an operational processing logic in corresponding data format (i.e. NGSI-v2, NGSI-LD etc). For example, if service topology comprises of NGSI-LD data format, then it is important that operators are designed keeping NGSI-LD format in mind.
 
 To refer templates for NGSI-LD operator creation, use these [templates](https://github.com/pradumnnec/tutorials.Edge-Computing/tree/NSGI-LD/template/NGSILD). 
 
