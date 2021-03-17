@@ -291,7 +291,7 @@ The form is explained as the following.
     otherwise, the operator docker image is fetched on demand, only when edge nodes need to run a scheduled task
     associated with this operator.
 
-> #Note:
+> # Note:
 >
 > Use "fogflow/overspeedvd" while registering the docker image for tutorial of NGSI-LD.
 >
