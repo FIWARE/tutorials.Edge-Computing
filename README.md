@@ -78,7 +78,7 @@ The FIWARE NGSI v2 information model has been evolved to better support linked d
 
 To know more about NGSI-LD supported API's in Fogflow, follow this [link](https://fogflow.readthedocs.io/en/latest/api.html#ngsi-ld-supported-api-s)
 
-![](https://fogflow.readthedocs.io/en/latest/_images/ngsild_architecture.png) 
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/ngsild_support.png) 
 
 
 ## Setup FogFlow Cloud Node
