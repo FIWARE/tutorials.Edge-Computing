@@ -1,5 +1,4 @@
 [![FIWARE Banner](https://fiware.github.io/tutorials.Edge-Computing/img/fiware.png)](https://www.fiware.org/developers)
-[![NGSI v2](https://img.shields.io/badge/NGSI-v2-5dc0cf.svg)](https://fiware-ges.github.io/orion/api/v2/stable/)
 
 [![FIWARE Context processing, analysis and visualisation](https://nexus.lab.fiware.org/static/badges/chapters/processing.svg)](https://github.com/FIWARE/catalogue/blob/master/processing/README.md)
 
@@ -18,6 +17,7 @@ better understanding, examples have been included in the tutorial.
 
 -   [Architecture](#architecture)
     -   [Layered Architecture](#layered-architecture)
+    -   [NGSI-LD Support In Fogflow](#ngsi-ld-support-in-fogflow)
 -   [Start Up](#start-up)
     -   [FogFlow Cloud Node](#fogflow-cloud-node)
     -   [FogFlow Edge Node](#fogflow-edge-node)
@@ -25,8 +25,8 @@ better understanding, examples have been included in the tutorial.
 -   [Dynamic Orchestration at Edges using FogFlow](#dynamic-orchestration-at-edges-using-fogflow)
     -   [Define a Fog Function](#define-and-trigger-a-fog-function)
         -   [Register the Task Operators](#register-the-task-operators)
-        -   [Define a "dummy" Fog Function](#define-a-dummy-fog-function)
-        -   [Trigger the "dummy" Fog Function](#trigger-the-dummy-fog-function)
+        -   [Define a "OverSpeed_Vehicle" Fog Function](#define-a-overspeed-vehicle-fog-function)
+        -   [Trigger the "OverSpeed_Vehicle" Fog Function](#trigger-the-overspeed-vehicle-fog-function)
     -   [Define a Service Topology](#define-and-trigger-a-service-topology)
         -   [Implement the Operator Functions](#implement-the-operator-functions)
         -   [Specify the Service Topology](#specify-the-service-topology)
@@ -49,15 +49,15 @@ this tutorial, which are relatable to the figure below.
 3.  FogFlow orchestrates processing flows at edges in no time. These processing flows may change the state of an
     actuator or publish some data back to FogFlow, it is all about what user wants to do.
 
+
 <hr class="processing"/>
 
 # Architecture
 
 The FogFlow framework operates on a geo-distributed, hierarchical, and heterogeneous ICT infrastructure that includes
-cloud nodes, edge nodes, and IoT devices. The following figure illustrates the system architecture of FogFlow and its
-major components across three logical layers.
+cloud nodes, edge nodes, and IoT devices. Now, Fogflow has become more dynamic because it supports NGSI-LD format, that means Fogflow is now NGSI-LD compliant. The following figure illustrates the system architecture of FogFlow and its major components across three logical layers.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/architecture.png)
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/Ngsi-ld-architecture.png)
 
 ## Layered Architecture
 
@@ -71,6 +71,15 @@ Logically, FogFlow consists of the following three layers:
 -   **data processing:** launches data processing tasks and establish data flows between tasks via the pub/sub
     interfaces provided by the context management layer. Edge workers (and of course the cloud worker) come under this
     layer.
+
+# NGSI-LD Support In Fogflow
+
+The FIWARE NGSI v2 information model has been evolved to better support linked data (entity relationships), property graphs and semantics (exploiting the capabilities offered by JSON-LD). The new era of data representation and data utilisation has opened up new horizion of possiblities with Fogflow. With the incorporation of NGSI-LD support, Fogflow has gained the power of interacting with other NGSI-LD compliant broker to build a more robust architecture and potential use cases.
+
+To know more about NGSI-LD supported API's in Fogflow, follow this [link](https://fogflow.readthedocs.io/en/latest/api.html#ngsi-ld-supported-api-s)
+
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/ngsild_support.png) 
+
 
 ## Setup FogFlow Cloud Node
 
@@ -242,7 +251,7 @@ FogFlow allows the developers to specify their own function code inside a regist
 know how to create a customized operator.
 
 Python, Java and JavaScript templates to write an operator can be found
-[here](https://github.com/FIWARE/tutorials.Edge-Computing/tree/master/templates).
+[here](https://github.com/pradumnnec/tutorials.Edge-Computing/tree/NSGI-LD/template).
 
 For the current tutorial, refer the below mentioned steps.
 
@@ -254,7 +263,7 @@ To register Operator, open fogflow dashboard. Select Operator Registry Tab from 
 menu on left and then click register button. Right click on workspace and select operator from drop down list and enter
 details as shown and at last click on submit.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/operator-registry.png)
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/operator_creation.png)
 
 > **Note :**
 >
@@ -282,9 +291,18 @@ The form is explained as the following.
     otherwise, the operator docker image is fetched on demand, only when edge nodes need to run a scheduled task
     associated with this operator.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/dockerimage-registry.png)
+> # Note:
+>
+> Use "fogflow/overspeedvd" while registering the docker image for tutorial of NGSI-LD.
+>
+> The above operator will notify Fogflow, When speed of a vehicle goes beyond 50.
+>
+>  To register the image, select DockerImage from left menu, under Operator Registry from dashboard and click register button.
 
-### Define a "dummy" Fog Function
+
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/docker_image_registry.png)
+
+### Define a "OverSpeed_Vehicle" Fog Function
 
 Right click inside the task design board, a menu will be displayed that includes:
 
@@ -292,20 +310,20 @@ Right click inside the task design board, a menu will be displayed that includes
     output streams.
 -   **EntityStream**: is the input data element which can be linked with a fog function Task as its input data stream.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-1.png)
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/Fog_ff_1.png)
 
 Choose "Task", a Task element will be placed on the design board, as shown below.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-2.png)
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/Fog_ff_2.png)
 
 Click the configuration button on the top-right corner of the task element, as illustrated in the following figure.
 Specify the name of the Task and choose an operator out of a list of some pre-registered operators.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-3.png)
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/Fog_ff_3.png)
 
 Add an "EntityStream" from the pop-up menu to the design board.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-4.png)
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/Fog_ff_4.png)
 
 It contains the following fields:
 
@@ -320,70 +338,61 @@ It contains the following fields:
     recorded in the Entity and False is used in case of broadcasted data, for example, some rule or threshold data that
     holds true for all locations, not for a specific location.
 
-Configure the EntityStream by clicking on its configuration button as shown below. "Temperature" is shown as example
-here, as is the entity type of input data for the "dummy" fog function.
+Configure the EntityStream by clicking on its configuration button as shown below. "Vehicle" is shown as example
+here, as it is the entity type of input data for the "overspeed_vehicle" fog function.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-5.png)
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/Fog_ff_5.png)
 
-There can be multiple EntityStreams for a Task and they must be connected to the Task as shown below.
+There can be multiple EntityStreams for a Task and they must be connected to the Task as shown below. After this click on submit button.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-6.png)
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/Fog_ff_6.png)
 
-Submit the Fog Function.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-7.png)
+### Trigger the "OverSpeed_Vehicle" Fog Function
 
-### Trigger the "dummy" Fog Function
+The defined "OverSpeed_Vehicle" fog function is triggered only when its required input data are available.
 
-The defined "Dummy" fog function is triggered only when its required input data are available.
-
-One way is to register a "Temperature" sensor device as shown below.
-
-Go to Device menu in System Status tab. Provide the following information.
-
--   **Device ID**: to specify a unique entity ID
--   **Device Type**: use "Temperature" as the entity type
--   **Location**: to place a location on the map
-
-![](https://fiware.github.io/tutorials.Edge-Computing/img/device-registration.png)
-
-Once the device profile is registered, a new "Temperature" sensor entity will be created and it will trigger the "dummy"
-fog function automatically.
-
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-triggering-device.png)
-
-The other way to trigger the fog function is to send an NGSI entity update in the form of a POST request to the FogFlow
-broker to create the "Temperature" sensor entity.
+The way to trigger the fog function is to send an NGSI-LD entity update in the form of a POST request to the FogFlow
+broker to create the "Vehicle" sensor entity. With creation of this entity, Fogflow automatically launches fogfunction.
 
 #### :one: Request
 
 ```console
-curl -iX POST \
-  'http://localhost:8080/ngsi10/updateContext' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "contextElements": [
-        {
-            "entityId": {
-                "id": "Device.temp001", "type": "Temperature", "isPattern": false
-            },
-            "attributes": [
-                {
-                  "name": "temp", "type": "integer", "value": 10
-                }
-            ],
-            "domainMetadata": [
-            {
-                "name": "location", "type": "point",
-                "value": {
-                    "latitude": 49.406393,
-                    "longitude": 8.684208
-                }
-            }
+curl --location --request POST '<Fogflow_Broker_IP>:8070/ngsi-ld/v1/entities/' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/ld+json' \
+--header 'Link: <{{link}}>; rel="https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"; type="application/ld+json"' \
+--data-raw '{
+    "id": "urn:ngsi-ld:Vehicle:A100",
+    "type": "Vehicle",
+    "brandName": {
+        "type": "Property",
+        "value": "Mercedes"
+    },
+    "isParked": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:OffStreetParking:Downtown1",
+        "observedAt": "2017-07-29T12:00:04",
+        "providedBy": {
+            "type": "Relationship",
+            "object": "urn:ngsi-ld:Person:Bob"
+        }
+    },
+    "speed": {
+        "type": "Property",
+        "value": 80
+    },
+    "createdAt": "2017-07-29T12:00:04",
+    "location": {
+        "type": "GeoProperty",
+        "value": {
+            "type": "Point",
+            "coordinates": [
+                -8.5,
+                41.2
             ]
         }
-    ],
-    "updateAction": "UPDATE"
+    }
 }'
 ```
 
@@ -391,11 +400,11 @@ Verify whether the fog function is triggered or not in the following way.
 
 -   check the task instance of this fog function, as shown in the following picture
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-task-running.png)
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/Task_Instance.png)
 
 -   check the result generated by its running task instance, as shown in the following picture
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/fog-function-streams.png)
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/Task_Stream.png)
 
 ## Define and trigger a Service Topology
 
@@ -418,35 +427,14 @@ the rule for anomaly detection.
 
 ### Implement the Operator Functions
 
-For this specific use case, two operators, anomaly and counter are used, which are already registered in FogFlow. Refer
-to the examples provided in the code repository.
+Users can implement there own set of computations in form of operator. For designing and implementing a service topology, it is necessary to implement an operational processing logic in corresponding data format (i.e. NGSI-v2, NGSI-LD etc). For example, if service topology comprises of NGSI-LD data format, then it is important that operators are designed keeping NGSI-LD format in mind.
 
--   [Anomaly Detector](https://github.com/smartfog/fogflow/tree/master/application/operator/anomaly) operator is to
-    detect anomaly events based on the collected data from power panels in a retail store. It has two types of inputs:
-
-    -   detection rules are provided and updated by the operator; The detection rules input stream type is associated
-        with `broadcast`, meaning that the rules are needed by all task instances of this operator. The granularity of
-        this operator is based on `shopID`, meaning that a dedicated task instance will be created and configured for
-        each shop.
-    -   sensor data are provided by power panel.
-
--   [Counter](https://github.com/smartfog/fogflow/tree/master/application/operator/counter) operator is to count the
-    total number of anomaly events for all shops in each city. Therefore, its task granularity is by `city`. Its input
-    stream type is the output stream type of the previous operator (Anomaly Detector).
-
-There are two types of result consumers:
-
-1.  a dashboard service in the cloud, which subscribes to the final aggregation results generated by the counter
-    operator for the global scope;
-2.  the alarm in each shop, which subscribes to the anomaly events generated by the Anomaly Detector task on the local
-    edge node in the retail store.
-
-![](https://fiware.github.io/tutorials.Edge-Computing/img/retail-flow.png)
+To refer templates for NGSI-LD operator creation, use these [templates](https://github.com/pradumnnec/tutorials.Edge-Computing/tree/NSGI-LD/template/NGSILD). 
 
 ### Specify the Service Topology
 
 Assume that the tasks to be used in the service topology have been implemented and registered, just specify the service
-topology in the following way using FogFlow Topology Editor.
+topology in the following way using FogFlow Topology Editor. For example,the image below shows the flow to impement a service topology.
 
 ![](https://fiware.github.io/tutorials.Edge-Computing/img/retail-topology-1.png)
 
@@ -487,60 +475,6 @@ The intent object is sent using the FogFlow dashboard with the following propert
 -   **Geoscope:** is a defined geographical area where input streams should be selected. Global as well as custom
     geoscopes can be set.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/intent-registry.png)
-
-As soon as context data are received, which fall within the scope of the intent object, tasks are launched on the
-nearest workers.
-
-Here are curl examples to send Input streams for Anomaly-Detector use case. It requires PowerPanel as well as Rule data.
-
-> **Note:** Users can also use
-> [Simulated Powerpanel Devices](https://github.com/smartfog/fogflow/tree/544ebe782467dd81d5565e35e2827589b90e9601/application/device/powerpanel)
-> to send PowerPanel data.
->
-> The Curl case assumes that the cloud IoT Broker is running on localhost on port 8070.
-
-#### :two: Request
-
-```console
-curl -iX POST \
-  'http://localhost:8070/ngsi10/updateContext' \
--H 'Content-Type: application/json' \
--d '
-    {
-    "contextElements": [
-        {
-            "entityId":{
-                "id":"Device.PowerPanel.01", "type":"PowerPanel"
-            },
-           "attributes":[
-                {
-                    "name":"usage", "type":"integer", "value":4
-                },
-                {
-                    "name":"shop", "type":"string", "value":"01"
-                },
-                {
-                    "name":"iconURL", "type":"string", "value":"/img/shop.png"
-                }
-           ],
-           "domainMetadata":[
-                {
-                    "name":"location", "type":"point",
-                    "value": {
-                        "latitude":35.7,
-                        "longitude":138
-                    }
-                },
-                {
-                    "name":"shop", "type":"string", "value":"01"
-                }
-           ]
-        }
-    ],
-    "updateAction": "UPDATE"
-}'
-```
 
 Outputs of the Service Topology will be published to the Broker, any application subscribing to the data will receive
 the notification. An actuator device can also receive these streams as inputs from the Broker. Resulting streams will
