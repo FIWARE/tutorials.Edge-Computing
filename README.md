@@ -79,9 +79,9 @@ Logically, FogFlow consists of the following three layers:
 
 The FIWARE NGSI v2 information model has been evolved to better support linked data (entity relationships), property graphs and semantics (exploiting the capabilities offered by JSON-LD). The new era of data representation and data utilisation has opened up new horizion of possiblities with Fogflow. With the incorporation of NGSI-LD support, Fogflow has gained the power of interacting with other NGSI-LD compliant broker to build a more robust architecture and potential use cases.
 
-To know more about NGSI-LD supported API's in Fogflow, follow this [link](https://fogflow.readthedocs.io/en/latest/api.html#ngsi-ld-supported-api-s)
+To know more about NGSI-LD supported APIs in Fogflow, follow this [link](https://fogflow.readthedocs.io/en/latest/api.html#ngsi-ld-supported-api-s)
 
-![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/ngsild_support.png) 
+![](https://github.com/pradumnnec/tutorials.Edge-Computing/blob/NSGI-LD/images/ngsild_support.png)
 
 
 ## Setup FogFlow Cloud Node
@@ -432,7 +432,7 @@ the rule for anomaly detection.
 
 Users can implement there own set of computations in form of operator. For designing and implementing a service topology, it is necessary to implement an operational processing logic in corresponding data format (i.e. NGSI-v2, NGSI-LD etc). For example, if service topology comprises of NGSI-LD data format, then it is important that operators are designed keeping NGSI-LD format in mind.
 
-To refer templates for NGSI-LD operator creation, use these [templates](https://github.com/pradumnnec/tutorials.Edge-Computing/tree/NSGI-LD/template/NGSILD). 
+To refer templates for NGSI-LD operator creation, use these [templates](https://github.com/pradumnnec/tutorials.Edge-Computing/tree/NSGI-LD/template/NGSILD).
 
 ### Specify the Service Topology
 
