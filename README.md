@@ -1,14 +1,17 @@
-[![FIWARE Banner](https://fiware.github.io/tutorials.Edge-Computing/img/fiware.png)](https://www.fiware.org/developers)
+# Edge Computing[<img src="https://img.shields.io/badge/NGSI-LD-d6604d.svg" width="90"  align="left" />]("https://www.etsi.org/deliver/etsi_gs/CIM/001_099/009/01.03.01_60/gs_cim009v010301p.pdf)[<img src="https://fiware.github.io/tutorials.Edge-Computing/img/fiware.png" align="left" width="162">](https://www.fiware.org/)<br/>
 
 [![FIWARE Context processing, analysis and visualisation](https://nexus.lab.fiware.org/static/badges/chapters/processing.svg)](https://github.com/FIWARE/catalogue/blob/master/processing/README.md)
+[![License: MIT](https://img.shields.io/github/license/FIWARE/tutorials.Edge-Computing.svg)](https://opensource.org/licenses/MIT)
+[![Support badge](https://img.shields.io/badge/tag-fiware-orange.svg?logo=stackoverflow)](https://stackoverflow.com/questions/tagged/fiware)
+[![JSON LD](https://img.shields.io/badge/JSON--LD-1.1-f06f38.svg)](https://w3c.github.io/json-ld-syntax/) <br/>
+[![Documentation](https://img.shields.io/readthedocs/ngsi-ld-tutorials.svg)](https://ngsi-ld-tutorials.rtfd.io)
 
 This is an introductory tutorial for [FIWARE FogFlow](https://fogflow.readthedocs.io/en/latest/) that allows its users
 to dynamically orchestrate the processing flows on edges. It explains how to enable FogFlow on a distributed or a single
 node system, register user defined workload patterns and orchestrate them on the edges in the form of running tasks. For
 better understanding, examples have been included in the tutorial.
 
-🇯🇵 このチュートリアルは[日本語](README.ja.md)でもご覧いただけます。<br/>🇪🇸 Este tutorial también está disponible en
-[español](README.es.md)
+🇯🇵 このチュートリアルは[日本語](README.ja.md)でもご覧いただけます。<br/>
 
 ## Contents
 
