@@ -77,7 +77,7 @@ Logically, FogFlow consists of the following three layers:
 
 # NGSI-LD Support In Fogflow
 
-The FIWARE NGSI v2 information model has been evolved to better support linked data (entity relationships), property graphs and semantics (exploiting the capabilities offered by JSON-LD). The new era of data representation and data utilisation has opened up new horizion of possiblities with Fogflow. With the incorporation of NGSI-LD support, Fogflow has gained the power of interacting with other NGSI-LD compliant broker to build a more robust architecture and potential use cases.
+The FIWARE NGSI v2 information model has been evolved to better support linked data (entity relationships), property graphs and semantics (exploiting the capabilities offered by JSON-LD). The new era of data representation and data utilisation has opened up new horizion of possibilities with Fogflow. With the incorporation of NGSI-LD support, Fogflow has gained the power of interacting with other NGSI-LD compliant broker to build a more robust architecture and potential use cases.
 
 To know more about NGSI-LD supported APIs in Fogflow, follow this [link](https://fogflow.readthedocs.io/en/latest/api.html#ngsi-ld-supported-api-s)
 
