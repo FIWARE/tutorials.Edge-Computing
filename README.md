@@ -259,7 +259,7 @@ FogFlow allows the developers to specify their own function code inside a regist
 know how to create a customized operator.
 
 Python, Java and JavaScript templates to write an operator can be found
-[here](https://github.com/pradumnnec/tutorials.Edge-Computing/tree/NSGI-LD/template).
+[here](https://github.com/FIWARE/tutorials.Edge-Computing/tree/NGSI-LD/template).
 
 For the current tutorial, refer the below mentioned steps.
 
@@ -441,7 +441,7 @@ NGSI-LD etc). For example, if service topology comprises of NGSI-LD data format,
 designed keeping NGSI-LD format in mind.
 
 To refer templates for NGSI-LD operator creation, use these
-[templates](https://github.com/pradumnnec/tutorials.Edge-Computing/tree/NSGI-LD/template/NGSILD).
+[templates](https://github.com/FIWARE/tutorials.Edge-Computing/tree/NGSI-LD/template/NGSILD).
 
 ### Specify the Service Topology
 
