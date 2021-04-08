@@ -61,7 +61,7 @@ cloud nodes, edge nodes, and IoT devices. Now, Fogflow has become more dynamic b
 means Fogflow is now NGSI-LD compliant. The following figure illustrates the system architecture of FogFlow and its
 major components across three logical layers.
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/Ngsi-ld-architecture.png)
+![](https://fiware.github.io/tutorials.Edge-Computing/img/ngsi-ld-architecture.png)
 
 ## Layered Architecture
 
