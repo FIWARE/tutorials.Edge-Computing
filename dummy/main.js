@@ -92,11 +92,11 @@ function sendUpdateWithinBuffer() {
 
     ngsi10client
       .updateContext(tmp.ctxObj)
-      .then(function(data) {
+      .then(function (data) {
         console.log('======send update======');
         console.log(data);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
         console.log('failed to update context');
       });
@@ -117,7 +117,7 @@ function query(queryCtxReq, f) {
   ngsi10client
     .queryContext(queryCtxReq)
     .then(f)
-    .catch(function(error) {
+    .catch(function (error) {
       console.log('failed to subscribe context');
     });
 }
@@ -138,11 +138,11 @@ function subscribe(subscribeCtxReq) {
 
   ngsi10client
     .subscribeContext(subscribeCtxReq)
-    .then(function(subscriptionId) {
+    .then(function (subscriptionId) {
       console.log('subscription id = ' + subscriptionId);
       mySubscriptionId = subscriptionId;
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.log('failed to subscribe context');
     });
 }
@@ -163,11 +163,11 @@ function publish(ctxUpdate) {
 
     ngsi10client
       .updateContext(update)
-      .then(function(data) {
+      .then(function (data) {
         console.log('======send update======');
         console.log(data);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
         console.log('failed to update context');
       });
@@ -208,7 +208,7 @@ NGSIAgent.setNotifyHandler(handleNotify);
 NGSIAgent.setAdminHandler(handleAdmin);
 NGSIAgent.start(myport, startApp);
 
-process.on('SIGINT', function() {
+process.on('SIGINT', function () {
   NGSIAgent.stop();
   stopApp();
 
