@@ -15,8 +15,8 @@ fi
 
 
 stoppingContainers () {
-	echo "Stopping containers"
-	docker-compose --log-level ERROR -p fiware down -v --remove-orphans
+	echo "Stopping running containers"
+	docker compose -p fiware down -v --remove-orphans
 }
 
 displayServices () {
@@ -34,9 +34,9 @@ case "${command}" in
         ;;
 	 "start")
 		stoppingContainers
-		echo -e "Starting eight containers including \033[1;35mFogFlow\033[0m, an  \033[1mNGINX\033[0m instance, and \033[1mRabbitMQ\033[0m message broker."
+		echo -e "Starting containers: including \033[1;35mFogFlow\033[0m, an  \033[1mNGINX\033[0m instance, and \033[1mRabbitMQ\033[0m message broker."
 		echo ""
-		docker-compose --log-level ERROR -p fiware up -d --remove-orphans
+		docker compose -p fiware up -d --remove-orphans
 		displayServices
 		;;
 	"stop")
@@ -47,7 +47,7 @@ case "${command}" in
 		export $(cat .env | grep "#" -v)
 		echo "Pulling Docker images"
 		docker pull curlimages/curl
-		docker-compose --log-level ERROR -p fiware pull
+		docker compose -p fiware pull
 		;;
 	*)
 		echo "Command not Found."
