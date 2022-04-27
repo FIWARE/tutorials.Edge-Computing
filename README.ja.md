@@ -64,7 +64,7 @@ FogFlow フレームワークは、クラウド・ノード、エッジ・ノー
 FogFlow は NGSI-LD に準拠しています。次の図は、FogFlow のシステムアーキテクチャと、3つの論理レイヤーにわたるその主要
 コンポーネントを示しています。
 
-![](https://fiware.github.io/tutorials.Edge-Computing/img/Ngsi-ld-architecture.png)
+![](https://fiware.github.io/tutorials.Edge-Computing/img/ngsi-ld-architecture.png)
 
 <a name="layered-architecture"></a>
 
@@ -282,7 +282,7 @@ FogFlow を使用すると、開発者は登録済みのオペレータ内で独
 を確認してください。
 
 オペレータを作成するためのPython, Java, JavaScript のテンプレートは、
-[ここ](https://github.com/pradumnnec/tutorials.Edge-Computing/tree/NSGI-LD/template).
+[ここ](https://github.com/FIWARE/tutorials.Edge-Computing/tree/NGSI-LD/template).
 にあります。
 
 現在のチュートリアルについては、以下の手順を参照してください。
@@ -475,7 +475,7 @@ curl --location --request POST '<Fogflow_Broker_IP>:8070/ngsi-ld/v1/entities/' \
 データ形式で構成されている場合、オペレーターは NGSI-LD 形式を念頭に置いて設計することが重要です。
 
 NGSI-LD オペレータ作成用のテンプレートを参照するには、これらの
-[テンプレート](https://github.com/pradumnnec/tutorials.Edge-Computing/tree/NSGI-LD/template/NGSILD) を使用します 。
+[テンプレート](https://github.com/FIWARE/tutorials.Edge-Computing/tree/NGSI-LD/template/NGSILD) を使用します 。
 
 <a name="specify-the-service-topology"></a>
 
