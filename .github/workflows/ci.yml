@@ -27,9 +27,6 @@ jobs:
     - name: Build Images
       run: |
         ./services create test || true
-    - name: Run Orion
+    - name: Run Script
       run: |
-        ./services orion test && ./services stop test
-    - name: Run Scorpio
-      run: |
-        ./services scorpio test && ./services stop test
+        ./services start test && ./services stop test
