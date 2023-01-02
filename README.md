@@ -530,4 +530,4 @@ other FIWARE GEs.
 
 ## License
 
-[MIT](LICENSE) © 2020-2021 FIWARE Foundation e.V.
+[MIT](LICENSE) © 2020-2023 FIWARE Foundation e.V.
