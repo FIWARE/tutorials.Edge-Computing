@@ -34,7 +34,8 @@ stoppingContainers () {
 
 displayServices () {
 	echo ""
-	docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}" --filter name=fiware-*
+	docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}" --filter name="$1"
+
 	echo ""
 }
 
