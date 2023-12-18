@@ -392,7 +392,7 @@ FogFlow にオペレータを登録するには、次の手順が必要です。
 に送信して、"Vehicle" センサ・エンティティを作成することです。このエンティティを作成すると、FogFlow は自動的に
 フォグ・ファンクションを起動します。
 
-#### :one: リクエスト
+#### 1️⃣ リクエスト
 
 ```console
 curl --location --request POST '<Fogflow_Broker_IP>:8070/ngsi-ld/v1/entities/' \

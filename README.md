@@ -273,8 +273,7 @@ details as shown and at last click on submit.
 
 ![](https://fiware.github.io/tutorials.Edge-Computing/img/operator_creation.png)
 
-> **Note :**
->
+> [!NOTE]
 > User can add parameters to operator. To define the port for the operator application, use "service_port" and give a
 > valid port number as its value. The application would be accessible to the outer world through this port.
 
@@ -363,7 +362,7 @@ The defined "OverSpeed_Vehicle" fog function is triggered only when its required
 The way to trigger the fog function is to send an NGSI-LD entity update in the form of a POST request to the FogFlow
 broker to create the "Vehicle" sensor entity. With creation of this entity, Fogflow automatically launches fogfunction.
 
-#### :one: Request
+#### 1️⃣ Request
 
 ```console
 curl --location --request POST '<Fogflow_Broker_IP>:8070/ngsi-ld/v1/entities/' \
