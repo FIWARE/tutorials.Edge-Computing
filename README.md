@@ -256,8 +256,7 @@ details as shown and at last click on submit.
 
 ![](https://fiware.github.io/tutorials.Edge-Computing/img/operator-registry.png)
 
-> **Note :**
->
+> [!NOTE]
 > User can add parameters to operator. To define the port for the operator application, use "service_port" and give a
 > valid port number as its value. The application would be accessible to the outer world through this port.
 
@@ -494,7 +493,8 @@ nearest workers.
 
 Here are curl examples to send Input streams for Anomaly-Detector use case. It requires PowerPanel as well as Rule data.
 
-> **Note:** Users can also use
+> [!NOTE]
+>  Users can also use
 > [Simulated Powerpanel Devices](https://github.com/smartfog/fogflow/tree/544ebe782467dd81d5565e35e2827589b90e9601/application/device/powerpanel)
 > to send PowerPanel data.
 >
