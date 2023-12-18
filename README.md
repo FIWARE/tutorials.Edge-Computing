@@ -355,7 +355,7 @@ fog function automatically.
 The other way to trigger the fog function is to send an NGSI entity update in the form of a POST request to the FogFlow
 broker to create the "Temperature" sensor entity.
 
-#### :one: Request
+#### 1️⃣ Request
 
 ```console
 curl -iX POST \
@@ -500,7 +500,7 @@ Here are curl examples to send Input streams for Anomaly-Detector use case. It r
 >
 > The Curl case assumes that the cloud IoT Broker is running on localhost on port 8070.
 
-#### :two: Request
+#### 2️⃣ Request
 
 ```console
 curl -iX POST \

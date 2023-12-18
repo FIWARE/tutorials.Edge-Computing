@@ -373,7 +373,7 @@ System Status タブの Device メニューに移動します。以下の情報�
 Fog ファンクションをトリガーするもう1つの方法は、POST リクエストの形式で NGSI エンティティの更新を FogFlow broker に
 送信して、"Temperature" センサ・エンティティを作成することです。
 
-#### :one: リクエスト:
+#### 1️⃣ リクエスト:
 
 ```console
 curl -iX POST \
@@ -525,7 +525,7 @@ Anomaly-Detector の使用例の入力ストリームを送信するための Cu
 >
 > Curl のケースでは、クラウド IoT Broker がポート 8070 の localhost で実行されていると想定しています。
 
-#### :two: リクエスト:
+#### 2️⃣ リクエスト:
 
 ```console
 curl -iX POST \
