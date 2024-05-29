@@ -2,84 +2,8 @@
 #
 #  Command Line Interface to start all services associated with the Tutorial
 #
-#  For this tutorial the commands are merely a convenience script to run docker or docker-compose
-#
-#  Each services script can be run using either docker-compose (the external tool with the hyphen -) 
-#  or docker compose (the newer version directly bundled with Docker with a space )
-#
-#  if you start up with the following command:
-#
-#  ./services start legacy
-#
-# This will force the script to use docker-compose which may be more reliable in 
-# some cases (or if an older version of Docker is being used)
 
 set -e
 
-dockerCmd="docker compose"
-if (( $# == 2 )); then
-    dockerCmd="docker-compose"
-fi
-
-if (( $# < 1 )); then
-    echo "Illegal number of parameters"
-    echo "usage: services [create|start|stop]"
-    exit 1
-fi
-
-
-stoppingContainers () {
-	CONTAINERS=$(docker ps --filter "label=org.fiware=tutorial" -aq)
-	if [[ -n $CONTAINERS ]]; then 
-		echo "Stopping containers"
-		docker rm -f $CONTAINERS || true
-	fi
-	VOLUMES=$(docker volume ls -qf dangling=true) 
-	if [[ -n $VOLUMES ]]; then 
-		echo "Removing old volumes"
-		docker volume rm $VOLUMES || true
-	fi
-	NETWORKS=$(docker network ls  --filter "label=org.fiware=tutorial" -q) 
-	if [[ -n $NETWORKS ]]; then 
-		echo "Removing tutorial networks"
-		docker network rm $NETWORKS || true
-	fi
-}
-
-displayServices () {
-	echo ""
-	docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}" --filter name=fiware-*
-	(gp ports list 2> /dev/null) || true 
-	echo ""
-}
-
-
-
-command="$1"
-case "${command}" in
-	"help")
-        echo "usage: services [create|start|stop]"
-        ;;
-	 "start")
-		stoppingContainers
-		echo -e "Starting containers: including \033[1;35mFogFlow\033[0m, an  \033[1mNGINX\033[0m instance, and \033[1mRabbitMQ\033[0m message broker."
-		echo ""
-		${dockerCmd} up -d --remove-orphans
-		displayServices
-		;;
-	"stop")
-		export $(cat .env | grep "#" -v)
-		stoppingContainers
-		;;
-	"create")
-		export $(cat .env | grep "#" -v)
-		echo "Pulling Docker images"
-		docker pull -q quay.io/curl/curl
-		${dockerCmd} pull --ignore-pull-failures
-		;;
-	*)
-		echo "Command not Found."
-		echo "usage: services [create|start|stop]"
-		exit 127;
-		;;
-esac
+echo -e "Checkout the \033[1;36mNGSI-v2\033[0m branch of this repository to run the Smart Supermarket tutorial.\n"
+echo -e "Checkout the \033[1;31mNGSI-LD\033[0m branch of this repository to run the Smart Farm tutorial.\n"
