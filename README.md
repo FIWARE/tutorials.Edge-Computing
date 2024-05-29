@@ -2,7 +2,7 @@
 
 [![FIWARE Context processing, analysis and visualisation](https://nexus.lab.fiware.org/static/badges/chapters/processing.svg)](https://github.com/FIWARE/catalogue/blob/master/processing/README.md)
 
-This is an introductory tutorial for [FIWARE FogFlow](https://fogflow.readthedocs.io/en/latest/) that allows its users
+These tutorials are an introduction to [FIWARE FogFlow](https://fogflow.readthedocs.io/en/latest/) which allows its users
 to dynamically orchestrate the processing flows on edges. It explains how to enable FogFlow on a distributed or a single
 node system, register user defined workload patterns and orchestrate them on the edges in the form of running tasks. For
 better understanding, examples have been included in the tutorial.
