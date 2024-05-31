@@ -1,4 +1,9 @@
-# Cloud-Edge Computing[<img src="https://img.shields.io/badge/NGSI-LD-d6604d.svg" width="90"  align="left" />](https://www.etsi.org/deliver/etsi_gs/CIM/001_099/009/01.08.01_60/gs_cim009v010801p.pdf)[<img src="https://fiware.github.io/tutorials.Edge-Computing/img/fiware.png" align="left" width="162">](https://www.fiware.org/)<br/>
+<h1  align="center">
+    <img src="https://fiware.github.io/tutorials.Step-by-Step/img/fiware-farm.png" />
+    <img src="https://img.shields.io/badge/NGSI-LD-d6604d.svg" width="90"/>
+</h1>
+
+## Cloud-Edge Computing
 
 [![FIWARE Context processing, analysis and visualisation](https://nexus.lab.fiware.org/static/badges/chapters/processing.svg)](https://github.com/FIWARE/catalogue/blob/master/processing/README.md)
 [![License: MIT](https://img.shields.io/github/license/FIWARE/tutorials.Edge-Computing.svg)](https://opensource.org/licenses/MIT)
