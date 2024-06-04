@@ -279,6 +279,7 @@ details as shown and at last click on submit.
 ![](https://fiware.github.io/tutorials.Edge-Computing/img/operator_creation.png)
 
 > [!NOTE]
+>
 > User can add parameters to operator. To define the port for the operator application, use "service_port" and give a
 > valid port number as its value. The application would be accessible to the outer world through this port.
 
