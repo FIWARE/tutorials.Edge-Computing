@@ -26,7 +26,7 @@ jobs:
         submodules: recursive
     - name: Build Images
       run: |
-        ./services create test || true
+        ./services create || true
     - name: Run Script
       run: |
-        ./services start test && ./services stop test
+        ./services start && ./services stop
