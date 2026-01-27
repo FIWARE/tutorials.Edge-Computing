@@ -55,4 +55,4 @@ git checkout NGSI-LD
 
 ## License
 
-[MIT](LICENSE) © 2020-2024 FIWARE Foundation e.V.
+[MIT](LICENSE) © 2020-2026 FIWARE Foundation e.V.
