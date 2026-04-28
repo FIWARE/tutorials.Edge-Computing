@@ -222,7 +222,7 @@ cce2c64503d9   dgraph/standalone       "/run.sh"                2 minutes ago   
 FogFlow は、動的な処理フローを通じて、ドアのロック、ランプのスイッチのオン、シールドのオン/オフなど、接続されている
 アクチュエータ・デバイスの状態を変更できます。**アクチュエータ・デバイスに接続する**には、
 [アクチュエータ・デバイスと FogFlow の統合](https://fogflow.readthedocs.io/en/latest/integration.html#southbound-integration)
-を参照してください。このチュートリアルには、NGSI デバイスと非 NGSI デバイス (特に、UltraLight デバイスと MQTT デバイス)
+を参照してください。このチュートリアルには、NGSI デバイスと非 NGSI デバイス (特に、JSON デバイスと MQTT デバイス)
 の例も含まれています。
 
 サウスバウンドが実際に FIWARE のコンテキストでどのように機能するかについての基本的なアイデアを得るには、

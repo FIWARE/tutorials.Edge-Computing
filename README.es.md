@@ -226,7 +226,7 @@ FogFlow puede cambiar el estado de los dispositivos actuadores conectados, como 
 una lámpara, encender un el escudo se enciende o se apaga, etc. a través de sus flujos de procesamiento dinámico. Para
 **conectarse a un dispositivo actuador**, refiérase a
 [Integrar un dispositivo actuador con FogFlow](https://fogflow.readthedocs.io/en/latest/example5.html). Este tutorial
-también contiene ejemplos de dispositivos NGSI y no NGSI (especialmente, los UltraLight y MQTT).
+también contiene ejemplos de dispositivos NGSI y no NGSI (especialmente, los JSON y MQTT).
 
 Para tener una idea básica de cómo funciona realmente Southbound en el contexto de FIWARE, véase
 [este](https://fiware-tutorials.readthedocs.io/en/latest/iot-agent/index.html#southbound-traffic-commands) tutorial.
