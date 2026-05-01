@@ -107,8 +107,6 @@ To know more about NGSI-LD supported APIs in Fogflow, follow this
     [this](https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-16-04) for
     installation, required version > 2.4.2;
 
-> **Important:** Please also allow your user to execute the Docker commands without sudo.
-
 **To start the installation of FogFlow cloud services, do the following:**
 
 1.  Change the following IP addresses in config.json according to the current environment.
