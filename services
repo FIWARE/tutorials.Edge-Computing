@@ -13,7 +13,7 @@
 # This will force the script to use docker-compose which may be more reliable in 
 # some cases (or if an older version of Docker is being used)
 
-set -e
+set -eo pipefail
 
 dockerCmd="docker compose"
 if (( $# == 2 )); then
