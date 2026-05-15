@@ -14,7 +14,7 @@
 # This will force the script to use docker-compose which may be more reliable in 
 # some cases (or if an older version of Docker is being used)
 
-set -e
+set -eo pipefail
 
 dockerCmd="docker compose"
 if (( $# == 2 )); then
@@ -68,11 +68,11 @@ case "${command}" in
 		displayServices
 		;;
 	"stop")
-		export $(cat .env | grep "#" -v)
+		set -a; source .env; set +a
 		stoppingContainers
 		;;
 	"create")
-		export $(cat .env | grep "#" -v)
+		set -a; source .env; set +a
 		echo "Pulling Docker images"
 		docker pull -q quay.io/curl/curl
 		${dockerCmd} pull --ignore-pull-failures

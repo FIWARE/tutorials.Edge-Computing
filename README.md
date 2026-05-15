@@ -7,6 +7,10 @@
 
 ## Edge Computing
 
+> "Always stay on the edge of your seat."
+>
+> — Proverb
+
 [![FIWARE Context processing, analysis and visualisation](https://nexus.lab.fiware.org/static/badges/chapters/processing.svg)](https://github.com/FIWARE/catalogue/blob/master/processing/README.md)
 
 This is an introductory tutorial for [FIWARE FogFlow](https://fogflow.readthedocs.io/en/latest/) that allows its users
