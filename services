@@ -54,11 +54,11 @@ case "${command}" in
 		displayServices
 		;;
 	"stop")
-		export $(cat .env | grep "#" -v)
+		set -a; source .env; set +a
 		stoppingContainers
 		;;
 	"create")
-		export $(cat .env | grep "#" -v)
+		set -a; source .env; set +a
 		echo "Pulling Docker images"
 		docker pull -q quay.io/curl/curl:${CURL_VERSION}
 		${dockerCmd} pull --ignore-pull-failures
